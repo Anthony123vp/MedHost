@@ -55,29 +55,29 @@
             <form action="{{ route('pacientes.store')}}" method="POST">
               @csrf
               <div style='width:100%;display:flex;'>
-                  <input style='margin-right:5px;' type="text" placeholder='NUMERO DOCUMENTO' id="dni" name="dni">
-                  <input type="text" name='nombres' placeholder='NOMBRE' id="nombres_">
+                  <input style='margin-right:5px;padding-left:6px;' type="text" placeholder='NUMERO DOCUMENTO' id="dni" name="dni">
+                  <input style='padding-left:6px;' type="text" name='nombres' placeholder='NOMBRE' id="nombres_">
 
               </div>
               <div style='width:100%;display:flex;'>
-              <input type="text" placeholder='APELLIDO PATERNO' name='ape_paterno' id="ape_paterno">
-              <input style='margin-left:5px;' type="text" name='ape_materno' placeholder='APELLIDO MATERNO' id="ape_materno">
+              <input style='padding-left:6px;' type="text" placeholder='APELLIDO PATERNO' name='ape_paterno' id="ape_paterno">
+              <input style='margin-left:5px;padding-left:6px;' type="text" name='ape_materno' placeholder='APELLIDO MATERNO' id="ape_materno">
               </div>
               <div style='width:100%;display:flex;'>
-                  <select name="sexo" id="sexo" >
+                  <select style='padding-left:6px;' name="sexo" id="sexo" >
                         <option style='#ccc' value="">  SEXO</option>
                         <option value="M">Masculino</option>
                         <option value="F">Femenino</option>
                         <option value="X">Prefiero no decirlo</option>
                     </select>
-                    <input style='margin-left:5px;' type="date" placeholder='Dia' autocomplete="off" name='f_nacimiento' id="f_nacimiento">
+                    <input style='margin-left:5px;padding-left:6px;' type="date" placeholder='Dia' autocomplete="off" name='f_nacimiento' id="f_nacimiento">
               </div>
             
               <div style='width:100%;display:flex;'>
-                  <input type="text" name="email" placeholder="  EMAIL">
-                  <input style='margin-left:5px;' type="text" placeholder='CELULAR' autocomplete="off" name='celular' id="celular" oninput="formatNumber()" maxlength="13">
+                  <input style='padding-left:6px;' type="text" name="email" placeholder="  EMAIL">
+                  <input style='margin-left:5px;padding-left:6px;' type="text" placeholder='CELULAR' autocomplete="off" name='celular' id="celular" oninput="formatNumber()" maxlength="13">
               </div>
-              <select  name="id_insurance" id="id_insurance">
+              <select style='padding-left:6px;'  name="id_insurance" id="id_insurance">
                   <option value="">SEGURO</option>
                   @foreach ($insurances as $insurance)
                       <option value="{{ $insurance->id_insurance }}">{{ $insurance->nombre }}</option>
@@ -86,11 +86,11 @@
               
           <div style="width: 100%;">
             <div class="password-container">
-              <input type="password" placeholder="CONTRASEÑA" name="password" autocomplete="off" id="password">
+              <input style='padding-left:6px;' type="password" placeholder="CONTRASEÑA" name="password" autocomplete="off" id="password">
               <span class="password-toggle" onmousedown="togglePasswordVisibility('password')" onmouseup="togglePasswordVisibility('password')"></span>
             </div>
-            <div class="password-container" style="margin-left: 5px;">
-              <input type="password" placeholder="REPITE CONTRASEÑA" name="password_2" autocomplete="off" id="password_2">
+            <div class="password-container">
+              <input style='padding-left:6px;' type="password" placeholder="REPITE CONTRASEÑA" name="password_2" autocomplete="off" id="password_2">
               <span class="password-toggle" onmousedown="togglePasswordVisibility('password_2')" onmouseup="togglePasswordVisibility('password_2')"></span>
             </div>
           </div>    
