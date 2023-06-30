@@ -15,20 +15,31 @@ class PacienteSeeder extends Seeder
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
-        $paciente = new Paciente();
-        $paciente->id_user = 1; 
-        $paciente->id_insurance = 1;
-        $paciente->nombres = 'Anthony';
-        $paciente->ape_paterno = 'Vilcatoma';
-        $paciente->ape_materno = 'Palacios';
-        $paciente->sexo = 'M'; 
-        $paciente->celular = '987352145';
-        $paciente->dni = '72861324';
-        $paciente->f_nacimiento = '2004-10-19';
-        $paciente->estado = '1';
-        $paciente->created_at = now();
-        $paciente->updated_at = now();
-        $paciente->save();
+        Paciente::create([
+            'id_user' => 1,
+            'id_insurance' => 1,
+            'nombres' => 'Anthony',
+            'ape_paterno' => 'Vilcatoma',
+            'ape_materno' => 'Palacios',
+            'sexo' => 'F',
+            'celular' => '987352145',
+            'dni' => '72861324',
+            'f_nacimiento' => '2004-10-19',
+            'estado' => '1',
+        ]);
+
+        Paciente::create([
+            'id_user' => 1,
+            'id_insurance' => 2,
+            'nombres' => 'Dave',
+            'ape_paterno' => 'Santivañez',
+            'ape_materno' => 'Munguia',
+            'sexo' => 'M',
+            'celular' => '903010882',
+            'dni' => '72565013',
+            'f_nacimiento' => '2003-03-02',
+            'estado' => '1',
+        ]);
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }
 }

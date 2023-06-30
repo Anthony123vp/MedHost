@@ -33,11 +33,14 @@
         <div class="login">
             <h2>INICIAR SESIÓN</h2>
             <div  class="inputbox">
-                <input type="text" name="email"  placeholder="EMAIL">
+                <input style='padding-left:6px;' type="text" name="email"  placeholder="EMAIL">
                 @error('email')
                 {{ $message}}
                 @enderror
-                  <input type="password" name="password" placeholder="PASSWORD">
+                  <div class="password-container">
+                    <input style='padding-left:6px;' type="password" name="password" placeholder="PASSWORD" autocomplete="off" id="password">
+                    <span class="password-toggle" onmousedown="togglePasswordVisibility('password')" onmouseup="togglePasswordVisibility('password')"></span>
+                  </div>
               </div>
               <p>FORGET PASSWORD?</p>
           <!-- <button type="submit">LOG IN</button> -->
@@ -55,13 +58,13 @@
             <form action="{{ route('pacientes.store')}}" method="POST">
               @csrf
               <div style='width:100%;display:flex;'>
-                  <input style='margin-right:5px;padding-left:6px;' type="text" placeholder='NUMERO DOCUMENTO' id="dni" name="dni">
-                  <input style='padding-left:6px;' type="text" name='nombres' placeholder='NOMBRE' id="nombres_">
+                  <input style='margin-right:5px;padding-left:6px;' type="number" placeholder='NUMERO DOCUMENTO' id="dni" name="dni" oninput="capitalizeFirstLetter(this)">
+                  <input style='padding-left:6px;' type="text" name='nombres' placeholder='NOMBRE' id="nombres_" oninput="capitalizeFirstLetter(this)">
 
               </div>
               <div style='width:100%;display:flex;'>
-              <input style='padding-left:6px;' type="text" placeholder='APELLIDO PATERNO' name='ape_paterno' id="ape_paterno">
-              <input style='margin-left:5px;padding-left:6px;' type="text" name='ape_materno' placeholder='APELLIDO MATERNO' id="ape_materno">
+              <input style='padding-left:6px;' type="text" placeholder='APELLIDO PATERNO' name='ape_paterno' id="ape_paterno" oninput="capitalizeFirstLetter(this)">
+              <input style='margin-left:5px;padding-left:6px;' type="text" name='ape_materno' placeholder='APELLIDO MATERNO' id="ape_materno" oninput="capitalizeFirstLetter(this)">
               </div>
               <div style='width:100%;display:flex;'>
                   <select style='padding-left:6px;' name="sexo" id="sexo" >
@@ -75,7 +78,7 @@
             
               <div style='width:100%;display:flex;'>
                   <input style='padding-left:6px;' type="text" name="email" placeholder="  EMAIL">
-                  <input style='margin-left:5px;padding-left:6px;' type="text" placeholder='CELULAR' autocomplete="off" name='celular' id="celular" oninput="formatNumber()" maxlength="13">
+                  <input style='margin-left:5px;padding-left:6px;' type="text" placeholder='CELULAR' autocomplete="off" name='celular' id="celular"  maxlength="11" oninput="formatPhoneNumber_(this)" >
               </div>
               <select style='padding-left:6px;'  name="id_insurance" id="id_insurance">
                   <option value="">SEGURO</option>
@@ -120,3 +123,22 @@
 
 </html>
 <script src="Js/log_sign.js"></script>
+<script>
+  function capitalizeFirstLetter(input) {
+  var value = input.value;
+  input.value = value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function formatPhoneNumber_(input) {
+  var value = input.value.replace(/\D/g, ''); // Eliminar todos los caracteres que no sean dígitos
+  var formattedValue = '';
+  for (var i = 0; i < value.length; i++) {
+    if (i > 0 && i % 3 === 0) {
+      formattedValue += '-';
+    }
+    formattedValue += value.charAt(i);
+  }
+  input.value = formattedValue;
+}
+
+</script>

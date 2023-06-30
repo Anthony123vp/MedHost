@@ -61,6 +61,9 @@ class PacienteController extends Controller
             'id_insurance' => 'required',
             'celular' => 'required',
         ]);
+
+        $celular = str_replace('-', '', $request->input('celular'));
+        $request->merge(['celular' => (int)$celular]);
         
         Paciente::create([
             'id_user' => $id_usuarios,
