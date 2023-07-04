@@ -132,9 +132,6 @@ class ReservaController extends Controller
         return view('Reserva.editar',['reserva'=>$reserva,'paciente'=>$dniPaciente,'servicios'=>$servicios,'especialidades'=>$especialidades]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Reserva $id)
     {
         $request->validate([
