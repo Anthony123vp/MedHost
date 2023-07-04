@@ -20,7 +20,7 @@
           <p><b>Teléfono:</b> +51 989-282-262</p>
         </div>
         <div class="header-static-info">
-          <p><b>Horario de Apertura : </b>Lunes - Domingo: 00 am - 24:00 pm</p>
+          <p><b>Horario de Apertura:</b>Lunes - Domingo: 00 am - 24:00 pm</p>
         </div>
         <div class="links-icons">
           <a href=""><i class="fa-brands fa-facebook-f"></i></a>
