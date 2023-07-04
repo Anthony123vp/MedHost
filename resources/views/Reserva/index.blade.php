@@ -34,16 +34,17 @@
             <table id='tabla_admin'>
                 <thead>
                     <tr>
-                        <th> Nº <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Paciente <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Especialidad <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Servicio <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Medico <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Fecha <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Hora Cita  <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Consultorio <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Estado <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Acciones <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Nº </th>
+                        <th> Paciente </th>
+                        <th> Especialidad </th>
+                        <th> Servicio </th>
+                        <th> Medico </th>
+                        <th> Modalidad </th>
+                        <th> Fecha </th>
+                        <th> Hora Cita  </th>
+                        <th> Consultorio </th>
+                        <th> Estado </th>
+                        <th> Acciones </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,9 +59,17 @@
                             <td>{{ $reserva->especialidad }}</td>
                             <td>{{ $reserva->servicio}}</td>
                             <td>{{ $reserva->medico }}</td>
+                            <td>{{ $reserva->modalidad }}</td>
                             <td>{{ date( "d/m/Y", strtotime($reserva->fecha))}}</td>
                             <td>{{ date( "g:i a", strtotime( $reserva->hora_inicio)) }}</td>
-                            <td>{{ $reserva->cod_habitacion }}</td>
+                            <!-- <td>{{ $reserva->cod_habitacion }}</td> -->
+                            <td>
+                                @if ($reserva->modalidad == "virtual")
+                                    -
+                                    @else
+                                    {{ $reserva->cod_habitacion }}
+                                @endif
+                            </td>
                             <td>
                                 @if ($reserva->estado == 1)
                                 

@@ -37,7 +37,7 @@ class ServicioMedHostSeeder extends Seeder
 
 
         DB::select("CREATE OR REPLACE VIEW CITA_MEDICA_RECEPCIONISTA AS ( 
-            SELECT a.id_reserva,pac.dni,f.nombre AS especialidad,serv.nombre AS servicio ,concat(h.nombres,' ',h.ape_paterno)AS medico,cons.cod_habitacion,horario.fecha,horario.hora_inicio,
+            SELECT a.id_reserva,a.modalidad,pac.dni,f.nombre AS especialidad,serv.nombre AS servicio ,concat(h.nombres,' ',h.ape_paterno)AS medico,cons.cod_habitacion,horario.fecha,horario.hora_inicio,
                     a.estado
             
                     FROM cita_medica a
