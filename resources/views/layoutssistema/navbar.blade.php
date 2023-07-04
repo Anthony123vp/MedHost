@@ -24,13 +24,13 @@
 <nav class="sidebar close">
         <header>
             <div class="image-text">
-                <span class="image">
+                <span class="image" style='width:auto;'>
                     <img src="/Images/logo.png" alt="">
                 </span>
 
-                <div class="text logo-text">
-                    <span class="name">MEDHOST</span>
-                    <span class="profession">SYSTEM</span>
+                <div class="text logo-text" style='width:100%;display:flex;justify-content:center;'>
+                    <span style='width:100%;display:flex;justify-content:center;letter-spacing:5px;' class="name">MEDHOST</span>
+                    <span style='width:100%;display:flex;justify-content:center;letter-spacing:2px;' class="profession">SYSTEM</span>
                 </div>
             </div>
 

@@ -16,15 +16,28 @@
 					</div>
 					<div class="form-group">
 						<div class="form-row form-row-1">
-							<input type="time" id="appt" name="hora_inicio"  required>
+							<select name="hora_inicio" id="hora_inicio" required>
+								@for ($hour = 0; $hour < 24; $hour++)
+									@for ($minute = 0; $minute < 60; $minute += 30)
+										<option value="{{ sprintf('%02d', $hour) }}:{{ sprintf('%02d', $minute) }}">{{ sprintf('%02d', $hour) }}:{{ sprintf('%02d', $minute) }}</option>
+									@endfor
+								@endfor
+							</select>
 						</div>
 						<div class="form-row form-row-2">
-							<input type="time" id="appt" name="hora_final" required>
+							<select name="hora_final" id="hora_final" required>
+								@for ($hour = 0; $hour < 24; $hour++)
+									@for ($minute = 0; $minute < 60; $minute += 30)
+										<option value="{{ sprintf('%02d', $hour) }}:{{ sprintf('%02d', $minute) }}">{{ sprintf('%02d', $hour) }}:{{ sprintf('%02d', $minute) }}</option>
+									@endfor
+								@endfor
+							</select>
 						</div>
 					</div>
                     <div class="form-row-last">
 						<input type="submit" name="register" class="register" value="Registrar">
 					</div>
+
 				</div>
 				<div class="form-right">
 				</div>
@@ -32,3 +45,20 @@
 		</div>
 	</div>
 @endsection
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#hora_inicio').change(function() {
+			var horaInicio = $(this).val();
+			$('#hora_final option').each(function() {
+				var horaFinal = $(this).val();
+				if (horaFinal <= horaInicio) {
+					$(this).hide();
+				} else {
+					$(this).show();
+				}
+			});
+		});
+	});
+</script>
+<!-- id="appt" -->

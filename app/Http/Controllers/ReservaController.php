@@ -88,7 +88,8 @@ class ReservaController extends Controller
             'dni'=>'required',
             'servicio_medhost'=>'required',
             'medico_horario'=>'required',
-            'consultorio'=>'required'
+            'consultorio'=>'required',
+            'modalidad'=>'required'
         ]);
 
         /** Consiguiendo el Id del paciente por medio del dni*/
@@ -100,6 +101,7 @@ class ReservaController extends Controller
         $cita_nueva->id_paciente = $id_paciente;
         $cita_nueva->id_servicio_medhost= $request->input('servicio_medhost');
         $cita_nueva->id_medico_horario = $request->input('medico_horario');
+        $cita_nueva->modalidad = $request->input('modalidad');
         $cita_nueva -> save();
 
         /*Cambiando de estado el horario del medico seleccionado */
@@ -139,7 +141,8 @@ class ReservaController extends Controller
             'dni'=>'required',
             'servicio_medhost'=>'required',
             'medico_horario'=>'required',
-            'consultorio'=>'required'
+            'consultorio'=>'required',
+            'modalidad'=>'required'
         ]);
 
         $id_horario_medico=$id->id_medico_horario;
@@ -151,6 +154,7 @@ class ReservaController extends Controller
         $id->id_paciente = $id_paciente;
         $id->id_servicio_medhost= $request->input('servicio_medhost');
         $id->id_medico_horario = $request->input('medico_horario');
+        $id->modalidad = $request->input('modalidad');
         $id -> save();
 
         /*Cambiando de estado el horario del medico seleccionado */

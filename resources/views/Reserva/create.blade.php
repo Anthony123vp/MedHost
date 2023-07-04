@@ -60,7 +60,7 @@
 						</div>
 						<div class="form-row form-row-4">
 							<select name="servicio_medhost" id="especilidad_Servicio">
-							    <option value="employees">Tipo de Servicio</option>
+							    <option value="employees">Tipo Servicio</option>
 								
 							</select>
 							<span class="select-btn">
@@ -89,9 +89,19 @@
 						  	<i class="zmdi zmdi-chevron-down"></i>
 						</span>
 					</div>
-					<br><br>
-					<h2>Consultorio</h2>
+					<h2>Modalidad</h2>
 					<div class="form-row">
+						<select  id="modalidad" name='modalidad'>
+						    <option value="" >Modalidad</option>
+							<option value="virtual">Virtual</option>
+							<option value="presencial">Presencial</option>
+						</select>
+						<span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+					</div>
+					<h2 id="divConsultorio">Consultorio</h2>
+					<div id="divConsultorio2" class="form-row">
 						<input type="text"  name="consultorio" id="consultorio" placeholder="Consultorio" readonly required>
 					</div>
 					<div class="form-row-last">
@@ -102,6 +112,7 @@
 							<button class="cancelar_boton" type="reset" >Limpiar</button>
 					    </div>
                     </div>
+					<br>
 				</div>
 				
 			</form>
@@ -110,6 +121,7 @@
 @endsection
 
 @section('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 	var servicio = document.getElementById('servicio');
 	const especialidad = document.getElementById('especialidad');
@@ -222,6 +234,24 @@
 		const consultorioresponse= await fetch(`/api/Consultorios/${medico.value}`);
 		const consultorios = await consultorioresponse.json()
 		consultorio.value = consultorios['cod_habitacion'];
+	});
+
+
+
+
+	$(document).ready(function() {
+		$("#modalidad").change(function() {
+			var modalidad = $(this).val();
+			if (modalidad === "virtual") {
+				$("#divConsultorio").hide();
+				$("#divConsultorio2").hide();
+				$(".boton").css("margin-top", "100px");
+			} else {
+				$("#divConsultorio").show();
+				$("#divConsultorio2").show();
+				$(".boton").css("margin-top", "7px");
+			}
+		});
 	});
 </script>
 

@@ -16,7 +16,8 @@ class AuthenthicatedSessionController extends Controller
         
         if(!Auth::attempt($credentials)){
             throw ValidationException::withMessages([
-                'email' => 'No encontramos su usuario en la base de datos'
+                'email' => 'No encontramos su usuario en la base de datos',
+                'password' => 'La contraseña ingresada no es correcta'
             ]);
         };
 

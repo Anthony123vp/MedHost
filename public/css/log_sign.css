@@ -1,6 +1,6 @@
 body {
     /* background-image: url('../Imagenes/1208868.png'); */
-    background-color: #d4ecdd;
+    background-color: #d4ecdd !important;
     font-family: "Roboto", sans-serif;
     background-repeat:none;
     background-size: cover;
@@ -9,7 +9,7 @@ body {
   .container {
     /*border:1px solid white;*/
     width: 1000px;
-    height: 600px;
+    height: 720px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -44,6 +44,7 @@ body {
   
   .moving {
     right: 45%;
+    /* background-image: url(../Imagenes/pastel_fondo.jpg); */
   }
 
   .loginMsg,

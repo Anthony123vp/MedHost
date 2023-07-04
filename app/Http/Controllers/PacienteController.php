@@ -39,7 +39,7 @@ class PacienteController extends Controller
         $request->validate([
             'email' => 'required|unique:users',
             'password' => 'required',
-            'password_2' => 'required',
+            'password_2' => 'required|same:password',
         ]);
 
         
@@ -52,7 +52,7 @@ class PacienteController extends Controller
         $id_usuarios = $usuario->id_user;
 
         $request->validate([
-            'dni' => 'required',
+            'dni' => 'required|min:8|max:8',
             'nombres' => 'required',
             'ape_paterno' => 'required',
             'ape_materno' => 'required',
