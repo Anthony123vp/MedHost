@@ -9,6 +9,7 @@
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="/css/sistema.css">
     <link rel="stylesheet" href="/css/editar.css">
+    <link rel="shortcut icon" href="/images/logo.png">
 
     
     <!----===== Boxicons CSS ===== -->
