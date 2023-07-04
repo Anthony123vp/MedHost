@@ -134,17 +134,16 @@
         width="287" height="380px">
     </div>
     <div class="infochosse">
-      <h1>Why Our Clients <br></h1>
+      <h1>Por que debes<br></h1>
       <div class="title">
         <hr>
-        <h1>Choose Us</h1>
+        <h1>Elegirnos</h1>
       </div>
       <br>
-      <p>Our salon aims to deliver the best nail design exprience and top-notch customer service.</p>
+      <p>Nuestros consultorios presentan la más alta calidad y contamos con medicos de prestigio.</p>
       <br>
-      <span>We use all-natural, organic body products, hard-to-find polish brands and colors, iPads at every seat, and a
-        drink menu featuring fresh-pressed juices and hand-crafted coffees.</span>
-      <a class="boton" href="#">READ MORE</a>
+      <span>Nosotros usamos medicinas de laboratorios de alto prestigio ademas de ello contamos con un convenio de otras empresas como Zoom que nos permiten realizar atenciones de manera remota</span>
+      <a class="boton" href="#">LEER MÁS</a>
     </div>
   </section>
 
@@ -247,100 +246,82 @@
         <div class="slide swiper-slide">
           <img src="Imagenes/img1.jpg" alt="" class="image" />
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-            saepe provident dolorem a quaerat quo error facere nihil deleniti
-            eligendi ipsum adipisci, fugit, architecto amet asperiores
-            doloremque deserunt eum nemo.
+            ¡MedHost ha cambiado mi experiencia en el cuidado de la salud! Gracias a su plataforma en línea, puedo reservar citas médicas de manera rápida y sencilla, sin tener que esperar largas horas en la sala de espera. Además, su sistema de historial médico digitalizado me permite acceder a mis registros de salud en cualquier momento, lo cual es extremadamente conveniente. ¡Recomiendo MedHost a todos aquellos que buscan una atención médica eficiente y moderna!
           </p>
 
           <i class="bx bxs-quote-alt-left quote-icon"></i>
 
           <div class="details">
             <span class="name">Marnie Lotter</span>
-            <span class="job">Web Developer</span>
+            <span class="job">Paciente</span>
           </div>
         </div>
         <div class="slide swiper-slide">
           <img src="Imagenes/img2.jpg" alt="" class="image" />
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-            saepe provident dolorem a quaerat quo error facere nihil deleniti
-            eligendi ipsum adipisci, fugit, architecto amet asperiores
-            doloremque deserunt eum nemo.
+            Como paciente crónico, siempre es un desafío coordinar mis múltiples consultas y tratamientos médicos. Sin embargo, desde que descubrí MedHost, mi vida ha sido mucho más fácil. Su plataforma centralizada me permite programar y administrar todas mis citas médicas de manera organizada. Además, el recordatorio automático de citas y medicamentos me ha ayudado a mantenerme al día con mi tratamiento. ¡MedHost ha sido una bendición para mí y mi salud!
           </p>
 
           <i class="bx bxs-quote-alt-left quote-icon"></i>
 
           <div class="details">
             <span class="name">Marnie Lotter</span>
-            <span class="job">Web Developer</span>
+            <span class="job">Paciente</span>
           </div>
         </div>
         <div class="slide swiper-slide">
           <img src="Imagenes/img3.jpg" alt="" class="image" />
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-            saepe provident dolorem a quaerat quo error facere nihil deleniti
-            eligendi ipsum adipisci, fugit, architecto amet asperiores
-            doloremque deserunt eum nemo.
+            MedHost ha transformado la forma en que me comunico con mis médicos. Antes, solía tener dificultades para contactar a mi médico y recibir respuestas a mis preguntas. Sin embargo, con la función de mensajería segura de MedHost, puedo comunicarme directamente con mi equipo médico, hacer preguntas, solicitar recetas y obtener respuestas rápidas y confiables. Estoy agradecida de tener esta herramienta a mi disposición para una mejor atención médica.
           </p>
 
           <i class="bx bxs-quote-alt-left quote-icon"></i>
 
           <div class="details">
             <span class="name">Marnie Lotter</span>
-            <span class="job">Web Developer</span>
+            <span class="job">Paciente</span>
           </div>
         </div>
 
         <div class="slide swiper-slide">
           <img src="Imagenes/img5.jpg" alt="" class="image" />
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-            saepe provident dolorem a quaerat quo error facere nihil deleniti
-            eligendi ipsum adipisci, fugit, architecto amet asperiores
-            doloremque deserunt eum nemo.
+            La experiencia con MedHost ha sido excepcional. Desde el momento en que llego a la clínica, el personal me recibe con una atención amable y eficiente. Además, la plataforma en línea de MedHost me permite acceder a resultados de pruebas médicas de forma rápida y segura, sin tener que esperar días para recibir los resultados. Gracias a MedHost, mi experiencia en el cuidado de la salud ha mejorado significativamente.
           </p>
 
           <i class="bx bxs-quote-alt-left quote-icon"></i>
 
           <div class="details">
             <span class="name">Marnie Lotter</span>
-            <span class="job">Web Developer</span>
+            <span class="job">Paciente</span>
           </div>
         </div>
         
         <div class="slide swiper-slide">
           <img src="Imagenes/img6.jpg" alt="" class="image" />
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-            saepe provident dolorem a quaerat quo error facere nihil deleniti
-            eligendi ipsum adipisci, fugit, architecto amet asperiores
-            doloremque deserunt eum nemo.
+            La experiencia con MedHost ha sido excepcional. Desde el momento en que llego a la clínica, el personal me recibe con una atención amable y eficiente. Además, la plataforma en línea de MedHost me permite acceder a resultados de pruebas médicas de forma rápida y segura, sin tener que esperar días para recibir los resultados. Gracias a MedHost, mi experiencia en el cuidado de la salud ha mejorado significativamente.
           </p>
 
           <i class="bx bxs-quote-alt-left quote-icon"></i>
 
           <div class="details">
             <span class="name">Marnie Lotter</span>
-            <span class="job">Web Developer</span>
+            <span class="job">Paciente</span>
           </div>
         </div>
 
         <div class="slide swiper-slide">
           <img src="Imagenes/img7.jpg" alt="" class="image" />
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-            saepe provident dolorem a quaerat quo error facere nihil deleniti
-            eligendi ipsum adipisci, fugit, architecto amet asperiores
-            doloremque deserunt eum nemo.
+            Quiero expresar mi gratitud hacia MedHost por su excepcional servicio y atención al paciente. Desde mi primera visita a su sitio web, quedé impresionada por la claridad de la información y la facilidad de uso de la plataforma. Pude programar una cita con mi médico de manera rápida y sencilla, y cuando llegué a la clínica, fui recibida con una sonrisa cálida y un personal amable. Durante mi consulta, mi médico utilizó la plataforma MedHost para acceder a mi historial médico completo, lo que garantizó una atención personalizada y precisa. Estoy muy agradecida por el enfoque centrado en el paciente de MedHost y por su compromiso de proporcionar una atención médica de calidad. ¡Recomendaré MedHost a mis amigos y familiares sin dudarlo!
           </p>
 
           <i class="bx bxs-quote-alt-left quote-icon"></i>
 
           <div class="details">
             <span class="name">Marnie Lotter</span>
-            <span class="job">Web Developer</span>
+            <span class="job">Paciente</span>
           </div>
         </div>
       </div>
