@@ -260,7 +260,7 @@
   }
 .citas_pendientes{
     margin-top: 20px;
-    margin-left: 50%;
+    /* margin-left: 50%; */
     height: 80vh;
     padding-right: 15px;
     overflow-y: scroll;
@@ -288,7 +288,7 @@ border-radius: 5px;
 
 
 .card {
-    max-width: 440px;
+    max-width: 100%;
     position: relative;
     display: block;
     overflow: hidden;
@@ -306,6 +306,7 @@ border-radius: 5px;
     justify-content: space-between;
     grid-gap: 1rem;
     gap: 1rem;
+    align-items: center;
   }
   
   .header a{
@@ -397,7 +398,7 @@ border-radius: 5px;
   }
   
   .post-info {
-    margin-top: 1.5rem;
+    margin-top: 0.8rem;
     display: flex;
     grid-gap: 1rem;
     gap: 1rem;
@@ -420,4 +421,46 @@ border-radius: 5px;
     font-size: 0.75rem;
     line-height: 1rem;
     color: rgba(107, 114, 128,1);
+  }
+
+
+
+
+
+
+  .rating{
+    font-size: 10px;
+  }
+
+  .rating:not(:checked) > input {
+    position: absolute;
+    appearance: none;
+  }
+  
+  .rating:not(:checked) > label {
+    cursor: pointer;
+    font-size: 20px;
+    color: #e58e09;
+  }
+  
+  .rating:not(:checked) > label:before {
+    content: '★';
+    font-size: 20px;
+  }
+  
+  .rating > input:checked + label:hover,
+  .rating > input:checked + label:hover ~ label,
+  .rating > input:checked ~ label:hover,
+  .rating > input:checked ~ label:hover ~ label,
+  .rating > label:hover ~ input:checked ~ label {
+    color: #e58e09;
+  }
+  
+  .rating:not(:checked) > label:hover,
+  .rating:not(:checked) > label:hover ~ label {
+    color: #ff9e0b;
+  }
+  
+  .rating > input:checked ~ label {
+    color: #ffa723;
   }
