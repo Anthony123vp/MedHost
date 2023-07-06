@@ -9,8 +9,8 @@
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="/css/sistema.css">
     <link rel="stylesheet" href="/css/editar.css">
-    <link rel="shortcut icon" href="/images/logo.png">
-    
+    <link rel="shortcut icon" href="/imagenes/logo_new.jpeg">
+
     
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>

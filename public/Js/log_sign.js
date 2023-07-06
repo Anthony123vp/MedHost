@@ -73,13 +73,14 @@ document.querySelector("#switch2").addEventListener("click", function (event) {
 });
 
 
-setTimeout(function () {
-  document.querySelector("#switch1").click();
-}, 1000);
+// setTimeout(function () {
+//   document.querySelector("#switch1").click();
+// }, 1000);
 
-setTimeout(function () {
-  document.querySelector("#switch2").click();
-}, 3000);
+// setTimeout(function () {
+//   document.querySelector("#switch2").click();
+// }, 3000);
+
 function togglePasswordVisibility(inputId) {
   var input = document.getElementById(inputId);
   var toggle = document.querySelector("span.password-toggle");

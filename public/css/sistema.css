@@ -828,6 +828,7 @@ thead th {
     transition: all .3s ease;
     box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
     color: hsl(0, 0%, 100%);
+    margin-top: 20px;
    }
    
    .eliminar_b:hover {

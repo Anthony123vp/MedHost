@@ -59,15 +59,21 @@
                             <td>{{ $reserva->especialidad }}</td>
                             <td>{{ $reserva->servicio}}</td>
                             <td>{{ $reserva->medico }}</td>
-                            <td>{{ $reserva->modalidad }}</td>
+                            <td>
+                                @if ($reserva->modalidad == "virtual")
+                                    <b style='color:#000;'>Virtual</b> 
+                                    @else
+                                    <b style='color:#000;'>Presencial</b>  
+                                @endif
+                            </td>
                             <td>{{ date( "d/m/Y", strtotime($reserva->fecha))}}</td>
                             <td>{{ date( "g:i a", strtotime( $reserva->hora_inicio)) }}</td>
                             <!-- <td>{{ $reserva->cod_habitacion }}</td> -->
                             <td>
                                 @if ($reserva->modalidad == "virtual")
-                                    -
+                                    <b style='color:blue;'>Zoom</b> 
                                     @else
-                                    {{ $reserva->cod_habitacion }}
+                                    <b>{{ $reserva->cod_habitacion }}</b> 
                                 @endif
                             </td>
                             <td>
