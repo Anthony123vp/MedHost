@@ -312,12 +312,7 @@ body.dark .home .text{
     color: var(--text-color);
 }
 
-.home .content{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 85vh;
-}
+
 
 main.table {
   width: 88%;

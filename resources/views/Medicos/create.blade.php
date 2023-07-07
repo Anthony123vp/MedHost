@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('css/Recepcionista.css') }}">
     <div class="login-box">
         <p>Nuevo Médico</p>
-        <form action="{{ route('medicos.store')}}" method="POST">
+        <form enctype="multipart/form-data" action="{{ route('medicos.store')}}" method="POST">
             @csrf
             <div class='contenedor_flex'>
                 <div class="user-box">
@@ -77,7 +77,9 @@
                         <option value="">CONSULTORIO</option>
                     </select>
                 </div>
+                <input name="imagen" id="imagen" type="file"/>
             </div>
+            
             <button class='boton_send' type="submit">
                 <div class="svg-wrapper-1">
                     <div class="svg-wrapper">

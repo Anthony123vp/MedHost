@@ -24,6 +24,7 @@ class Medico extends Model
         'celular',
         'dni',
         'f_nacimiento',
+        'imagen',
         'estado',
     ];
 

@@ -8,8 +8,8 @@
     @foreach ($citas as $cita)
     @if ( $cita->servicio == 'Cita_Medica')
 
-          @if ( $cita->pago_pendiente_estado == 1 && $cita->pago_estado == 0)
-          @elseif ( $cita->pago_pendiente_estado == 0 && $cita->pago_estado == 1)
+          @if ($cita->pago_estado == 1) 
+          @elseif ( $cita->pago_estado == 0)
           <div class="card">
         <div class="header">
           <div>
@@ -94,8 +94,8 @@
       <!-- ------------------------------------------- -->
 
 
-      @if ( $cita->pago_pendiente_estado == 1 && $cita->pago_estado == 0)
-          @elseif ( $cita->pago_pendiente_estado == 0 && $cita->pago_estado == 1)
+      @if ($cita->pago_estado == 1) 
+          @elseif ( $cita->pago_estado == 0)
           <div class="card">
         <div class="header">
           <div>
@@ -177,8 +177,8 @@
        <!-- ------------------------------------------- -->
 
 
-       @if ( $cita->pago_pendiente_estado == 1 && $cita->pago_estado == 0)
-          @elseif ( $cita->pago_pendiente_estado == 0 && $cita->pago_estado == 1)
+       @if ($cita->pago_estado == 1) 
+          @elseif ( $cita->pago_estado == 0)
           <div class="card">
         <div class="header">
           <div>

@@ -109,6 +109,13 @@
                             <span class="text nav-text">Citas</span>
                         </a>
                     </li>
+
+                    <li class="nav-link">
+                        <a href="{{ route('ReservaPacienteIndex') }}">
+                            <i class='bx bx-calendar-plus icon' ></i>
+                            <span class="text nav-text">Reservas</span>
+                        </a>
+                    </li>
                 <!--End Paciente-->
                 @endif
               @endauth

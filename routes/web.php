@@ -14,6 +14,7 @@ use App\Http\Controllers\InsuranceController;
 use App\Http\Controllers\ServicioController; 
 use App\Http\Controllers\Servicio_especialidadController; 
 use App\Http\Controllers\ServiciomedhostController; 
+use App\Http\Controllers\ReservaPacienteController;
 
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\ReservaPendienteController;
@@ -178,6 +179,10 @@ Route::get('/terapia_resultado/{id}',[HistorialClinicoController::class,'getResu
     // Route::get('/citas_crear', [HistorialController::class,'create'])->name('citas_crear.create');
     // Route::get('/citas_editar', [HistorialController::class,'edit'])->name('citas_editar.edit');
     // Route::post('/receta.store',[HistorialController::class, 'store'])->name('recetas.store');
+    /*Creacion de Reservas */
+    Route::get('/ReservaPaciente',[ReservaPacienteController::class,'index'])->name('ReservaPacienteIndex');
+    Route::get('/ReservaPaciente/create/{id}',[ReservaPacienteController::class,'create'])->name('PacienteCreateCita');
+    Route::post('/ReservaPaciente/{id_paciente}',[ReservaPacienteController::class,'store'])->name('PacienteReserva.store');
     /*Creacion de Horarios */
     Route::get('/examenes',[ExamenesController::class,'index'])->name('examenes.index');
     Route::get('/examenes/{id}/{id2}/editar', [ExamenesController::class, 'edit'])->name('examenes.edit');

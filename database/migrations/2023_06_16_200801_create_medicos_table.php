@@ -25,6 +25,7 @@ return new class extends Migration
             $table->char('celular', 9);
             $table->char('dni', 8)->unique('dni_UNIQUE');
             $table->date('f_nacimiento');
+            $table->string('imagen',50);
             $table->char('estado', 1)->default('1');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');

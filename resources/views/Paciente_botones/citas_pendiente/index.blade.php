@@ -69,7 +69,8 @@
             </a>
             <p class="name">{{$cita->servicio}} en {{$cita->especialidad}}</p>
           </div>
-          <a href="{{ route('examanes_resultado.edit', ['id' => $cita->id_paciente, 'id2' => $cita->id_reserva])}}"><div class="imagen_boton2"><i class='bx bxs-donate-heart'></i></div></a>
+          <div class="imagen_boton"><i class='bx bxs-time' ></i></div>
+
         </div>
           <p class="description">
             <b>Paciente |</b> {{$cita->paciente}}
@@ -102,7 +103,8 @@
             </a>
             <p class="name">{{$cita->servicio}} en {{$cita->especialidad}}</p>
           </div>
-          <a href="{{ route('citas_programadas.edit', ['id' => $cita->id_paciente, 'id2' => $cita->id_reserva])}}"><div class="imagen_boton3"><i class='bx bxs-donate-heart'></i></div></a>
+          <div class="imagen_boton"><i class='bx bxs-time' ></i></div>
+
         </div>
           <p class="description">
             <b>Paciente |</b> {{$cita->paciente}}

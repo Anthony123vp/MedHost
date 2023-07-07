@@ -60,7 +60,6 @@ class MedicoController extends Controller
         // return redirect()->route('medicos.index')->with('success', 'Medico creado correctamente.');
 
         // --------------------------------------------
-
         $request->validate([
             'email' => 'required|unique:users',
             'password' => 'required',
@@ -86,7 +85,16 @@ class MedicoController extends Controller
             'celular' => 'required',
             'f_nacimiento' => 'required',
         ]);
+
+
+
+        $imagen = $request->file('imagen');
+        $rutaGuardarImg = 'medicos_imagenes/';
+        $imagenProducto = date('YmdHis'). "." . $imagen->getClientOriginalExtension();
+        $imagen->move($rutaGuardarImg, $imagenProducto);
+        $imagen_ruta = "$imagenProducto";
         
+
         Medico::create([
             'id_user' => $id_usuarios,
             'id_especialidad' => $request->id_especialidad,
@@ -98,6 +106,7 @@ class MedicoController extends Controller
             'sexo' => $request->sexo,
             'f_nacimiento' => $request->f_nacimiento,
             'celular' => $request->celular,
+            'imagen' => $imagen_ruta ,
             // 'password_1' => bcrypt($request->password_1),
         ]);
         
