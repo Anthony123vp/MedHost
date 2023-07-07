@@ -111,13 +111,6 @@ class ReservaController extends Controller
         $pago_pendiente->metodo_pago = 'Tajeta';
         $pago_pendiente->estado = 1;
         $pago_pendiente -> save();
-        
-        $pago= new Pago();
-        $pago->id_cita_medica = $id_reserva;
-        $pago->monto= $precio;
-        $pago->metodo_pago = 'Tajeta';
-        $pago->estado = 0;
-        $pago->save();
 
         /*Cambiando de estado el horario del medico seleccionado */
         $horario_medico=Horario::findOrFail($request->input('medico_horario'));
