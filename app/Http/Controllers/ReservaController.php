@@ -10,18 +10,15 @@ use App\Models\Servicio;
 use App\Models\Medico;
 use App\Models\Consultorio;
 use App\Models\Insurance;
+use App\Models\Pago;
+use App\Models\PagoPendiente;
+use App\Models\Servicio_Medhost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Ramsey\Uuid\Type\Integer;
 use Illuminate\Support\Facades\Auth;
 class ReservaController extends Controller
 {
-
-    
-
-
-
-    
     
     public function Tipo_Servicio($servicio,$especialidad){
         $consulta = DB::select("SELECT * FROM SERVICIOMEDHOST where  id_servicio=$servicio and id_especialidad=$especialidad");
@@ -96,7 +93,6 @@ class ReservaController extends Controller
         $paciente = Paciente::where('dni',$request->dni)->firstOrFail();
         $id_paciente = $paciente->id_paciente;
 
-        /*Creando nueva cita**/
         $cita_nueva= new Reserva();
         $cita_nueva->id_paciente = $id_paciente;
         $cita_nueva->id_servicio_medhost= $request->input('servicio_medhost');
@@ -104,11 +100,30 @@ class ReservaController extends Controller
         $cita_nueva->modalidad = $request->input('modalidad');
         $cita_nueva -> save();
 
+        $id_reserva = $cita_nueva->id_reserva;
+        $id_servicio_medhost = $cita_nueva->id_servicio_medhost;
+
+        $precio = Servicio_Medhost::findOrFail($id_servicio_medhost)->precio;
+
+        $pago_pendiente= new PagoPendiente();
+        $pago_pendiente->id_cita_medica = $id_reserva;
+        $pago_pendiente->monto= $precio;
+        $pago_pendiente->metodo_pago = 'Tajeta';
+        $pago_pendiente->estado = 1;
+        $pago_pendiente -> save();
+        
+        $pago= new Pago();
+        $pago->id_cita_medica = $id_reserva;
+        $pago->monto= $precio;
+        $pago->metodo_pago = 'Tajeta';
+        $pago->estado = 0;
+        $pago->save();
+
         /*Cambiando de estado el horario del medico seleccionado */
         $horario_medico=Horario::findOrFail($request->input('medico_horario'));
         $horario_medico->estado='0';
         $horario_medico->save();
-        return redirect()->route('reservas.index');
+        return redirect()->route('reservas.index')->with('success', 'Reserva creada correctamente.');
 
     }
 

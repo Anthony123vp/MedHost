@@ -16,14 +16,17 @@ class ServicioMedHostSeeder extends Seeder
     {
         DB::select("CREATE OR REPLACE VIEW cita_pendiente as
         SELECT a.id_reserva,a.id_paciente,a.id_medico_horario,h.id_medico,f.nombre AS especialidad,serv.nombre as servicio,c.nombre as serv_exacto,concat(h.nombres,' ',h.ape_paterno,' ',h.ape_materno)AS medico,
-        ,h.celular,concat(paci.nombres,' ',paci.ape_paterno,' ',paci.ape_materno)AS paciente,
-        horario.fecha,horario.hora_inicio,horario.hora_final,cons.cod_habitacion,a.modalidad
+        h.celular,concat(paci.nombres,' ',paci.ape_paterno,' ',paci.ape_materno)AS paciente,
+        horario.fecha,horario.hora_inicio,horario.hora_final,cons.cod_habitacion,a.modalidad,p.estado AS pago_estado,pp.estado AS pago_pendiente_estado
         FROM cita_medica a
                 INNER JOIN serviciosmedhost c ON a.id_servicio_medhost = c.id_servicio_medhost
                 INNER JOIN servicios_especialidades e ON c.id_servicio_especialidad=e.id_servicio_especialidad
                 INNER JOIN especialidades f ON e.id_especialidad=f.id_especialidad
                 INNER JOIN servicios serv ON e.id_servicio=serv.id_servicio
                 
+                INNER JOIN pagos p ON a.id_reserva=p.id_cita_medica
+                INNER JOIN pagos_pendientes pp ON a.id_reserva=pp.id_cita_medica
+
                 INNER JOIN medico_horarios g ON a.id_medico_horario=g.id_medico_horario
                 INNER JOIN horarios horario ON g.id_horario = horario.id_horario
                 
