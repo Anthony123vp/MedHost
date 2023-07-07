@@ -88,7 +88,15 @@
       
       @elseif($cita->servicio == 'Examen')   
       <!-- -------------------------------------------------- -->
-      <div class="card">
+
+
+
+      <!-- ------------------------------------------- -->
+
+
+      @if ( $cita->pago_pendiente_estado == 1 && $cita->pago_estado == 0)
+          @elseif ( $cita->pago_pendiente_estado == 0 && $cita->pago_estado == 1)
+          <div class="card">
         <div class="header">
           <div>
             <a class="title">
@@ -157,13 +165,21 @@
             <i class="fa fa-whatsapp whatsapp-icon"></i>
           </a>
         </p>
-        @elseif( $cita->modalidad == 'presencial')    
+          
+        @elseif( $cita->modalidad == 'presencial')   
         @endif
+      @endif
         
       </div> 
+
       @elseif($cita->servicio == 'Terapia')   
       <!-- -------------------------------------------------- -->
-      <div class="card">
+       <!-- ------------------------------------------- -->
+
+
+       @if ( $cita->pago_pendiente_estado == 1 && $cita->pago_estado == 0)
+          @elseif ( $cita->pago_pendiente_estado == 0 && $cita->pago_estado == 1)
+          <div class="card">
         <div class="header">
           <div>
             <a class="title">
@@ -232,8 +248,10 @@
             <i class="fa fa-whatsapp whatsapp-icon"></i>
           </a>
         </p>
-        @elseif( $cita->modalidad == 'presencial')    
+          
+        @elseif( $cita->modalidad == 'presencial')   
         @endif
+      @endif
         
       </div> 
     @endif
