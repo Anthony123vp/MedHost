@@ -49,6 +49,8 @@ Route::view('/medhost_overview','MedHostPublic.overview')->name('Team_MedHost');
 Route::view('/medhost_about_our_team','MedHostPublic.about_our_team')->name('OurTeam_MedHost');
 Route::view('/medhost_especialidades','MedHostPublic.especialidades')->name('Especialidades_MedHost');
 
+Route::view('/pagos_pendiente','Paciente_botones.pagos_pendiente.index')->name('pagos_pendiente');
+
 // Route::view('/Login_Sign_User', 'Sistema.log_sign' )->name('Login_Sign_User');
 Route::get('/log_sign', [SistemaController::class,'index'])->name('login')->middleware('web');
 
