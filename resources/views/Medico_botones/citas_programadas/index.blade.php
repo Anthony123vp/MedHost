@@ -9,19 +9,7 @@
     @if ( $cita->servicio == 'Cita_Medica')
 
           @if ( $cita->pago_pendiente_estado == 1 && $cita->pago_estado == 0)
-            <!-- <div class="loader">
-              <div class="leaf"></div>
-              <div class="leaf"></div>
-              <div class="leaf"></div>
-              <div style='margin-left:10px;color:#550e0e;border-top:1px solid #550e0e;border-bottom:1px solid #550e0e;'>Cita con Pago Pendiente</div>
-            </div> -->
           @elseif ( $cita->pago_pendiente_estado == 0 && $cita->pago_estado == 1)
-            <!-- <div class="loader2">
-                <div class="leaf2"></div>
-                <div class="leaf2"></div>
-                <div class="leaf2"></div>
-                <div style='margin-left:10px;color:#327d3c;border-top:1px solid #327d3c;border-bottom:1px solid #327d3c;'>Cita Pagada Correctamente</div>
-              </div> -->
           <div class="card">
         <div class="header">
           <div>
@@ -94,7 +82,7 @@
           
         @elseif( $cita->modalidad == 'presencial')   
         @endif
-          @endif
+      @endif
         
       </div> 
       
