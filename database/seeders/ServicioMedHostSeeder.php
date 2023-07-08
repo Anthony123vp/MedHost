@@ -16,7 +16,7 @@ class ServicioMedHostSeeder extends Seeder
     {
         DB::select("CREATE OR REPLACE VIEW cita_pendiente as
         SELECT a.id_reserva,a.id_paciente,a.id_medico_horario,h.id_medico,f.nombre AS especialidad,serv.nombre as servicio,c.nombre as serv_exacto,concat(h.nombres,' ',h.ape_paterno,' ',h.ape_materno)AS medico,
-        h.celular,concat(paci.nombres,' ',paci.ape_paterno,' ',paci.ape_materno)AS paciente,
+        h.celular,concat(paci.nombres,' ',paci.ape_paterno,' ',paci.ape_materno)AS paciente,paci.celular AS celular_paciente,
         horario.fecha,horario.hora_inicio,horario.hora_final,cons.cod_habitacion,a.modalidad,p.estado AS pago_estado
         FROM cita_medica a
                 INNER JOIN serviciosmedhost c ON a.id_servicio_medhost = c.id_servicio_medhost

@@ -161,9 +161,11 @@ Route::delete('/administradores/{id}', [AdministradorController::class, 'destroy
     Route::patch('/reservas/{id}',[ReservaController::class,'update'])->name('reservas.update');
     Route::delete('/reservas/{id}',[ReservaController::class,'destroy'])->name('reservas.destroy');
     Route::post('/Informe',[ReservaController::class,'generateInforme'])->name('reservas.generateInforme');
-
-//Vista de botones para el paciente:
-Route::get('/citas_pendientes',[ReservaPendienteController::class,'index'])->name('citas_pendiente.index');
+    
+    //Vista de botones para el paciente:
+    Route::get('/citas_pendientes',[ReservaPendienteController::class,'index'])->name('citas_pendiente.index');
+    Route::get('/pagos_pendiente/{id}/editar', [ReservaPendienteController::class, 'edit'])->name('pagos_pendiente.edit');
+    Route::put('/pagos_pendiente/{id}', [ReservaPendienteController::class, 'update'])->name('pagos_pendiente.update');
 Route::get ('/historial',[HistorialClinicoController::class,'index'])->name('historial.index');
 Route::get('/cita_medica_resultado/{id}',[HistorialClinicoController::class,'getResultadoCitaMedica'])->name('ResultadoCitaMedica');
 Route::get('/examen_resultado/{id}',[HistorialClinicoController::class,'getResultadoExamen'])->name('ResultadoExamen');
