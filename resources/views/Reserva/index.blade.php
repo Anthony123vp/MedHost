@@ -71,7 +71,7 @@
                             <!-- <td>{{ $reserva->cod_habitacion }}</td> -->
                             <td>
                                 @if ($reserva->modalidad == "virtual")
-                                    <b style='color:blue;'>Zoom</b> 
+                                    <b style='color:green;'>Whatsapp</b> 
                                     @else
                                     <b>{{ $reserva->cod_habitacion }}</b> 
                                 @endif
