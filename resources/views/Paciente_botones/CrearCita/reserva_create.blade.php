@@ -137,7 +137,7 @@
 
     let medico_bd = {!! json_encode($medico, JSON_HEX_TAG) !!};
     window.addEventListener('load', async(e)=>{
-        const response = await fetch(`/api/Medico/${medico_bd["id_consultorio"]}/Horarios`);
+        const response = await fetch(`/api/Medico/${medico_bd["id_medico"]}/Horarios`);
 		const data = await response.json();
 		let option = ``;
 		data.forEach(element=>{
