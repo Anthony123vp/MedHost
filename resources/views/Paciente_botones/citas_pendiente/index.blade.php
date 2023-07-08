@@ -3,27 +3,6 @@
 <link rel="stylesheet" href="/css/citas_paciente.css">
 @endsection
 @section('content')
-  <div class="cajaanimada">
-      <div class="container-animation">
-        <div class="coffee-header">
-          <div class="coffee-header__buttons coffee-header__button-one"></div>
-          <div class="coffee-header__buttons coffee-header__button-two"></div>
-          <div class="coffee-header__display"></div>
-          <div class="coffee-header__details"></div>
-        </div>
-        <div class="coffee-medium">
-          <div class="coffe-medium__exit"></div>
-          <div class="coffee-medium__arm"></div>
-          <div class="coffee-medium__liquid"></div>
-          <div class="coffee-medium__smoke coffee-medium__smoke-one"></div>
-          <div class="coffee-medium__smoke coffee-medium__smoke-two"></div>
-          <div class="coffee-medium__smoke coffee-medium__smoke-three"></div>
-          <div class="coffee-medium__smoke coffee-medium__smoke-for"></div>
-          <div class="coffee-medium__cup"></div>
-        </div>
-        <div class="coffee-footer"></div>
-    </div>
-  </div>
     <div class="citas_pendientes">
     @foreach ($citas as $cita)
     @if ( $cita->servicio == 'Cita_Medica')
@@ -69,7 +48,7 @@
             </a>
             <p class="name">{{$cita->servicio}} en {{$cita->especialidad}}</p>
           </div>
-          <a href="{{ route('examanes_resultado.edit', ['id' => $cita->id_paciente, 'id2' => $cita->id_reserva])}}"><div class="imagen_boton2"><i class='bx bxs-donate-heart'></i></div></a>
+          <a href="{{ route('examenes.edit', ['id' => $cita->id_paciente, 'id2' => $cita->id_reserva])}}"><div class="imagen_boton2"><i class='bx bxs-donate-heart'></i></div></a>
         </div>
           <p class="description">
             <b>Paciente |</b> {{$cita->paciente}}
