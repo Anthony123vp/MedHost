@@ -304,10 +304,7 @@ body.dark .switch::before{
   flex-direction: column;
 }
 .home .text{
-    font-size: 30px;
-    font-weight: 500;
     color: var(--text-color);
-    padding: 12px 60px;
 }
 
 .sidebar.close ~ .home{
@@ -985,3 +982,8 @@ thead th {
   th{
     color: #fff;
   }
+.foto_medico{
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}

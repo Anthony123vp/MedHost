@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('ape_materno', 45);
             $table->char('sexo', 1);
             $table->char('celular', 9);
+            $table->string('linkedin',15);
+            $table->string('universidad',40);
             $table->char('dni', 8)->unique('dni_UNIQUE');
             $table->date('f_nacimiento');
             $table->string('imagen',50);

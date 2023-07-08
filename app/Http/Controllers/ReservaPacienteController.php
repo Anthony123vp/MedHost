@@ -47,7 +47,6 @@ class ReservaPacienteController extends Controller
     public function store(Request $request, $id_paciente)
     {
 
-
             $reserva = new Reserva();
             $reserva->id_paciente=$id_paciente;
             $reserva->id_servicio_medhost=$request->servicio_medhost;

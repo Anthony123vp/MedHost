@@ -32,8 +32,14 @@ class ReservaController extends Controller
     
     public function InformacionPaciente(String $dni){
         $paciente = DB::select("SELECT * FROM paciente INNER JOIN insurances ON (paciente.id_insurance = insurances.id_insurance) where  dni=$dni");
-        // $paciente = Paciente::where('dni',$dni)->get();
         return response()->json($paciente);
+    }
+
+    public function InformacionMedico($id){
+         $medicos = Medico::with('especialidad','consultorio')->where('id_medico',$id)->FirstOrFail();
+;
+        // $paciente = Paciente::where('dni',$dni)->get();
+        return response()->json($medicos);
     }
 
     public function getMedicos($especialidad){
@@ -85,10 +91,8 @@ class ReservaController extends Controller
             'dni'=>'required',
             'servicio_medhost'=>'required',
             'medico_horario'=>'required',
-            'consultorio'=>'required',
             'modalidad'=>'required'
         ]);
-
         /** Consiguiendo el Id del paciente por medio del dni*/
         $paciente = Paciente::where('dni',$request->dni)->firstOrFail();
         $id_paciente = $paciente->id_paciente;
