@@ -8,9 +8,10 @@
     @foreach ($citas as $cita)
     @if ( $cita->servicio == 'Cita_Medica')
 
+
           @if ($cita->pago_estado == 1) 
           @elseif ( $cita->pago_estado == 0)
-          <div class="card">
+      <div class="card">
         <div class="header">
           <div>
             <a class="title">
