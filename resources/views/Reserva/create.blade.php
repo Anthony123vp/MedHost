@@ -145,7 +145,7 @@
 									</form>
 								</div>
 							</div>
-							<div class="col-lg-4 col-md-5 d-flex align-items-stretch" style="background-color:#01d28e !important">
+							<div class="col-lg-4 col-md-5 d-flex align-items-stretch" style="background-color:#345B63!important">
 								<div class="info-wrap bg-primary w-100 p-md-5 p-4" style="display:none" id="doctor" >
 									<h3>Medico</h3>
 									<p class="mb-4" id="especialidad_medico">Especialista en </p>
@@ -178,7 +178,7 @@
 											<span class="fa fa-linkedin-square"></span>
 										</div>
 										<div class="text pl-3">
-											<p><span>Consultorio:<span>SADAS</p>
+											<p id="consultorio_medico"></p>
 										</div>
 									</div>
 									
@@ -209,7 +209,7 @@
 	const telefono_medico = document.getElementById('telefono_medico');
 	const especialidad_medico = document.getElementById('especialidad_medico');
 	const foto_medico = document.getElementById('foto_medico');
-
+	const consultorio_medico = document.getElementById('consultorio_medico');
 	especialidad.addEventListener('change',async(e)=>{
 		var id_servicio = servicio.value;
 		const response = await fetch(`/api/Reserva/${id_servicio}/${e.target.value}`);
@@ -254,6 +254,7 @@
 		nombre_medico.innerHTML = medico_informacion["nombres"]+' '+medico_informacion["ape_paterno"]+' '+medico_informacion["ape_materno"];
 		especialidad_medico.innerText = "Especialista en" +' '+medico_informacion["especialidad"]["nombre"];
 		telefono_medico.innerText = medico_informacion["celular"];
+		consultorio_medico.innerHTML = '<span>Consultorio: </span>'+ medico_informacion["consultorio"]["cod_habitacion"];
 		doctor.style.display="block";
 		console.log(medico_informacion);
 
