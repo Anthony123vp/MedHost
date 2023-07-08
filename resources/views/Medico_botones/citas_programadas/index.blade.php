@@ -24,6 +24,9 @@
               <p class="description">
                 <b>Paciente |</b> {{$cita->paciente}}
               </p>
+              <p class="description">
+              <b>Información del paciente |</b> Ingresar a la receta médica
+            </p>
               <div class="rating">
                 <p class="description">
                   <b>Medico |</b> {{$cita->medico}}
@@ -40,42 +43,42 @@
                 <label for="star1" title="text"></label>
               </div>
               <!-- -------------------- -->
+              <dl class="post-info">
+                <div class="cr">
+                  <dt class="dt">Fecha</dt>
+                  <dd class="dd">{{ date( "d/m/y", strtotime($cita->fecha))}} </dd>
+                </div>
+                <div class="cr">
+                  <dt class="dt">Hora</dt>
+                  <dd class="dd">{{ date( "g:i a", strtotime($cita->hora_inicio))}} </dd>
+                </div>
+                <div class="cr">
+                  <dt class="dt">Duracion</dt>
+                  <dd class="dd">30 minutos</dd>
+                </div>
+                <div class="cr">
+                  @if ( $cita->modalidad == 'virtual')
+                  <dt class="dt">Modalidad</dt>
+                  <dd class="dd">Virtual - <b style='color:green;'>Whatsapp</b> </dd>
+                  @elseif( $cita->modalidad == 'presencial')     
+                  <dt class="dt">Consultorio</dt>
+                  <dd class="dd">{{$cita->cod_habitacion}}</dd>
+                  @endif
+                </div>
+                <div class="cr">
+                  <dt class="dt">Celular</dt>
+                  <dd class="dd">(+51 {{$cita->celular}})</dd>
+                </div>
+                <div class="cr">
+                  <dt class="dt">Dirección</dt>
+                  <dd class="dd">Av. Javier Prado Este 1066, San Isidro 15036</dd>
+                </div>
+              </dl>
               <!-- -------------------- -->
-            <dl class="post-info">
-              <div class="cr">
-                <dt class="dt">Fecha</dt>
-                <dd class="dd">{{ date( "d/m/y", strtotime($cita->fecha))}} </dd>
-              </div>
-              <div class="cr">
-                <dt class="dt">Hora</dt>
-                <dd class="dd">{{ date( "g:i a", strtotime($cita->hora_inicio))}} </dd>
-              </div>
-              <div class="cr">
-                <dt class="dt">Duracion</dt>
-                <dd class="dd">30 minutos</dd>
-              </div>
-              <div class="cr">
-                @if ( $cita->modalidad == 'virtual')
-                <dt class="dt">Modalidad</dt>
-                <dd class="dd">Virtual - <b style='color:green;'>Whatsapp</b> </dd>
-                @elseif( $cita->modalidad == 'presencial')     
-                <dt class="dt">Consultorio</dt>
-                <dd class="dd">{{$cita->cod_habitacion}}</dd>
-                @endif
-              </div>
-              <div class="cr">
-                <dt class="dt">Celular</dt>
-                <dd class="dd">(+51 {{$cita->celular}})</dd>
-              </div>
-              <div class="cr">
-                <dt class="dt">Dirección</dt>
-                <dd class="dd">Av. Javier Prado Este 1066, San Isidro 15036</dd>
-              </div>
-            </dl>
             @if ( $cita->modalidad == 'virtual')
             <p class="description">
               <b>Iniciar Chat &  VideoLlamada - Whatsapp |</b>
-              <a style='margin-left:10px;' href="https://wa.me/51{{ $cita->celular }}?text={{ urlencode('Doctor '.$cita->medico.', ya me encuentro listo para iniciar la video-llamada. 🏥🩺') }}" class="whatsapp" target="_blank">
+              <a style='margin-left:10px;' href="https://wa.me/51{{ $cita->celular_paciente }}?text={{ urlencode('Paciente '.$cita->paciente.', ya podemos iniciar la video-llamada. 🏥🩺') }}" class="whatsapp" target="_blank">
 
                 <i class="fa fa-whatsapp whatsapp-icon"></i>
               </a>
@@ -110,88 +113,8 @@
           <p class="description">
             <b>Paciente |</b> {{$cita->paciente}}
           </p>
-          <div class="rating">
-            <p class="description">
-              <b>Medico |</b> {{$cita->medico}}
-            </p>
-            <input checked="" type="radio" id="star5" name="rate" value="5">
-            <label for="star5" title="text"></label>
-            <input type="radio" id="star4" name="rate" value="4">
-            <label for="star4" title="text"></label>
-            <input type="radio" id="star3" name="rate" value="3">
-            <label for="star3" title="text"></label>
-            <input type="radio" id="star2" name="rate" value="2">
-            <label for="star2" title="text"></label>
-            <input type="radio" id="star1" name="rate" value="1">
-            <label for="star1" title="text"></label>
-          </div>
-          <!-- -------------------- -->
-          <!-- -------------------- -->
-        <dl class="post-info">
-          <div class="cr">
-            <dt class="dt">Fecha</dt>
-            <dd class="dd">{{ date( "d/m/y", strtotime($cita->fecha))}} </dd>
-          </div>
-          <div class="cr">
-            <dt class="dt">Hora</dt>
-            <dd class="dd">{{ date( "g:i a", strtotime($cita->hora_inicio))}} </dd>
-          </div>
-          <div class="cr">
-            <dt class="dt">Duracion</dt>
-            <dd class="dd">30 minutos</dd>
-          </div>
-          <div class="cr">
-            @if ( $cita->modalidad == 'virtual')
-            <dt class="dt">Modalidad</dt>
-            <dd class="dd">Virtual - <b style='color:green;'>Whatsapp</b> </dd>
-            @elseif( $cita->modalidad == 'presencial')     
-            <dt class="dt">Consultorio</dt>
-            <dd class="dd">{{$cita->cod_habitacion}}</dd>
-            @endif
-          </div>
-          <div class="cr">
-            <dt class="dt">Celular</dt>
-            <dd class="dd">(+51 {{$cita->celular}})</dd>
-          </div>
-          <div class="cr">
-            <dt class="dt">Dirección</dt>
-            <dd class="dd">Av. Javier Prado Este 1066, San Isidro 15036</dd>
-          </div>
-        </dl>
-        @if ( $cita->modalidad == 'virtual')
-        <p class="description">
-          <b>Iniciar Chat &  VideoLlamada - Whatsapp |</b>
-          <a style='margin-left:10px;' href="https://wa.me/51{{ $cita->celular }}?text={{ urlencode('Doctor '.$cita->medico.', ya me encuentro listo para iniciar la video-llamada. 🏥🩺') }}" class="whatsapp" target="_blank">
-
-            <i class="fa fa-whatsapp whatsapp-icon"></i>
-          </a>
-        </p>
-          
-        @elseif( $cita->modalidad == 'presencial')   
-        @endif
-      @endif
-        
-      </div> 
-
-      @elseif($cita->servicio == 'Terapia')   
-      <!-- -------------------------------------------------- -->
-       <!-- ------------------------------------------- -->
-
-
-       @if ($cita->pago_estado == 1) 
-          @elseif ( $cita->pago_estado == 0)
-          <div class="card">
-        <div class="header">
-          <div>
-            <a class="title">
-              {{$cita->serv_exacto}}
-            </a>
-            <p class="name">{{$cita->servicio}} en {{$cita->especialidad}}</p>
-          </div>
-          <a href="{{ route('terapias.edit', ['id' => $cita->id_paciente, 'id2' => $cita->id_reserva])}}"><div class="imagen_boton3"><i class='bx bxs-donate-heart'></i></div></a>
-        </div>
           <p class="description">
-            <b>Paciente |</b> {{$cita->paciente}}
+            <b>Información del paciente |</b> Ingresar a la receta médica
           </p>
           <div class="rating">
             <p class="description">
@@ -244,7 +167,93 @@
         @if ( $cita->modalidad == 'virtual')
         <p class="description">
           <b>Iniciar Chat &  VideoLlamada - Whatsapp |</b>
-          <a style='margin-left:10px;' href="https://wa.me/51{{ $cita->celular }}?text={{ urlencode('Doctor '.$cita->medico.', ya me encuentro listo para iniciar la video-llamada. 🏥🩺') }}" class="whatsapp" target="_blank">
+          <a style='margin-left:10px;' href="https://wa.me/51{{ $cita->celular_paciente }}?text={{ urlencode('Paciente '.$cita->paciente.', ya podemos iniciar la video-llamada. 🏥🩺') }}" class="whatsapp" target="_blank">
+
+            <i class="fa fa-whatsapp whatsapp-icon"></i>
+          </a>
+        </p>
+          
+        @elseif( $cita->modalidad == 'presencial')   
+        @endif
+      @endif
+        
+      </div> 
+
+      @elseif($cita->servicio == 'Terapia')   
+      <!-- -------------------------------------------------- -->
+       <!-- ------------------------------------------- -->
+
+
+       @if ($cita->pago_estado == 1) 
+          @elseif ( $cita->pago_estado == 0)
+          <div class="card">
+        <div class="header">
+          <div>
+            <a class="title">
+              {{$cita->serv_exacto}}
+            </a>
+            <p class="name">{{$cita->servicio}} en {{$cita->especialidad}}</p>
+          </div>
+          <a href="{{ route('terapias.edit', ['id' => $cita->id_paciente, 'id2' => $cita->id_reserva])}}"><div class="imagen_boton3"><i class='bx bxs-donate-heart'></i></div></a>
+        </div>
+          <p class="description">
+            <b>Paciente |</b> {{$cita->paciente}}
+          </p>
+          <p class="description">
+            <b>Información del paciente |</b> Ingresar a la receta médica
+          </p>
+          <div class="rating">
+            <p class="description">
+              <b>Medico |</b> {{$cita->medico}}
+            </p>
+            <input checked="" type="radio" id="star5" name="rate" value="5">
+            <label for="star5" title="text"></label>
+            <input type="radio" id="star4" name="rate" value="4">
+            <label for="star4" title="text"></label>
+            <input type="radio" id="star3" name="rate" value="3">
+            <label for="star3" title="text"></label>
+            <input type="radio" id="star2" name="rate" value="2">
+            <label for="star2" title="text"></label>
+            <input type="radio" id="star1" name="rate" value="1">
+            <label for="star1" title="text"></label>
+          </div>
+          <!-- -------------------- -->
+          <!-- -------------------- -->
+        <dl class="post-info">
+          <div class="cr">
+            <dt class="dt">Fecha</dt>
+            <dd class="dd">{{ date( "d/m/y", strtotime($cita->fecha))}} </dd>
+          </div>
+          <div class="cr">
+            <dt class="dt">Hora</dt>
+            <dd class="dd">{{ date( "g:i a", strtotime($cita->hora_inicio))}} </dd>
+          </div>
+          <div class="cr">
+            <dt class="dt">Duracion</dt>
+            <dd class="dd">30 minutos</dd>
+          </div>
+          <div class="cr">
+            @if ( $cita->modalidad == 'virtual')
+            <dt class="dt">Modalidad</dt>
+            <dd class="dd">Virtual - <b style='color:green;'>Whatsapp</b> </dd>
+            @elseif( $cita->modalidad == 'presencial')     
+            <dt class="dt">Consultorio</dt>
+            <dd class="dd">{{$cita->cod_habitacion}}</dd>
+            @endif
+          </div>
+          <div class="cr">
+            <dt class="dt">Celular</dt>
+            <dd class="dd">(+51 {{$cita->celular}})</dd>
+          </div>
+          <div class="cr">
+            <dt class="dt">Dirección</dt>
+            <dd class="dd">Av. Javier Prado Este 1066, San Isidro 15036</dd>
+          </div>
+        </dl>
+        @if ( $cita->modalidad == 'virtual')
+        <p class="description">
+          <b>Iniciar Chat &  VideoLlamada - Whatsapp |</b>
+          <a style='margin-left:10px;' href="https://wa.me/51{{ $cita->celular_paciente }}?text={{ urlencode('Paciente '.$cita->paciente.', ya podemos iniciar la video-llamada. 🏥🩺') }}" class="whatsapp" target="_blank">
 
             <i class="fa fa-whatsapp whatsapp-icon"></i>
           </a>

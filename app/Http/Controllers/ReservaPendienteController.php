@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Paciente;
+use App\Models\PagoPendiente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -23,5 +24,23 @@ class ReservaPendienteController extends Controller
         $id_paciente=$paciente->id_paciente;
         $citas_atendidas = Cita_Pendiente::where('id_paciente',$id_paciente)->get();
         return view ('Paciente_botones\citas_pendiente\index',['citas'=>$citas_atendidas]);
+    }
+
+    public function edit($id)
+    {
+        $monto = PagoPendiente::findOrFail($id);
+        
+        return view('Paciente_botones\pagos_pendiente\edit', compact('monto'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $pago = PagoPendiente::findOrFail($id);
+        $pago->update([
+            'estado' => 0,
+            'updated_at' => now()
+        ]);
+
+        return redirect()->route('citas_pendiente.index')->with('success', 'Pago actualizado correctamente.');
     }
 }

@@ -1,6 +1,11 @@
 @extends('layoutssistema.navbar')
 @section('content')
-<link rel="stylesheet" href="css/pagos_pendientes.css">
+<link rel="stylesheet" href="{{ asset('css/pagos_pendientes.css')}}">
+<div id='alert_pago_linea' style='width: 80%;display:none;'>
+      <div style='align-self:flex-start;width:80%;border:2px solid red;border-radius:5px;color:red;background:#f2747447;height:40px;display:flex;align-items:center;padding-left:5px;'>
+          ¡¡ Debes completar todos los campos para realizar un pago exitoso!!
+        </div>
+    </div>
 <div class="checkout">
   <div class="credit-card-box">
     <div class="flip">
@@ -64,22 +69,24 @@
       </div>
     </div>
   </div>
-  <form class="form" autocomplete="off" novalidate>
+  <form class="form" action="{{ route('pagos_pendiente.update', ['id' => $monto->id_cita_medica]) }}" method="POST" onsubmit="return validateForm()">
+    @csrf
+    @method('PUT')
     <fieldset>
       <label for="card-number">Card Number</label>
-      <input type="num" id="card-number" class="input-cart-number" maxlength="4" />
-      <input type="num" id="card-number-1" class="input-cart-number" maxlength="4" />
-      <input type="num" id="card-number-2" class="input-cart-number" maxlength="4" />
-      <input type="num" id="card-number-3" class="input-cart-number" maxlength="4" />
+      <input type="num" id="card-number" class="input-cart-number" maxlength="4" minlength="4" require value="{{ old('card-number1')}}"   name="card-number1" />
+      <input type="num" id="card-number-1" class="input-cart-number" maxlength="4" minlength="4" require value="{{ old('card-number2')}}" name="card-number2"/>
+      <input type="num" id="card-number-2" class="input-cart-number" maxlength="4" minlength="4" require value="{{ old('card-number3')}}" name="card-number3"/>
+      <input type="num" id="card-number-3" class="input-cart-number" maxlength="4" minlength="4" require value="{{ old('card-number4')}}" name="card-number4"/>
     </fieldset>
     <fieldset>
       <label for="card-holder">Card holder</label>
-      <input type="text" id="card-holder" />
+      <input type="text" id="card-holder" name='holder' />
     </fieldset>
     <fieldset class="fieldset-expiration">
       <label for="card-expiration-month">Expiration date</label>
       <div class="select">
-        <select id="card-expiration-month">
+        <select id="card-expiration-month" require name='expiration_card'>
           <option value=''></option>
           <option value='01'>01</option>
           <option value='02'>02</option>
@@ -96,7 +103,7 @@
         </select>
       </div>
       <div class="select">
-        <select id="card-expiration-year">
+        <select id="card-expiration-year" require name='expiration_year'>
           <option value=''></option>
           <option value='2023'>2023</option>
           <option value='2024'>2024</option>
@@ -116,17 +123,23 @@
     </fieldset>
     <fieldset class="fieldset-ccv">
       <label for="card-ccv">CCV</label>
-      <input type="text" id="card-ccv" maxlength="3" />
+      <input type="text" id="card-ccv" maxlength="3" minlength="3" name='ccv_card' require />
+    </fieldset>
+    <fieldset>
+      <label for="total_pagar">Total a pagar</label>
+      <input style='background:rgba(0, 0, 0, 0.1);' type="text" id="total_pagar"  value="{{ $monto->monto }}" name='total_pagare' readonly='' />
     </fieldset>
     <!-- <button class="btn"><i class="fa fa-lock"></i> submit</button> -->
-    <button>
+    <button type="submit">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"></path></svg>
       <span>Pagar</span>
     </button>
   </form>
 </div>
 <style>
-
+button{
+  margin: 15px 0 0 0 !important;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -187,6 +200,23 @@ setTimeout(function () {
     });
 }, 500);
 
+function validateForm() {
+  var cardNumber1 = document.getElementById("card-number").value;
+  var cardNumber2 = document.getElementById("card-number-1").value;
+  var cardNumber3 = document.getElementById("card-number-2").value;
+  var cardNumber4 = document.getElementById("card-number-3").value;
+  var cardHolder = document.getElementById("card-holder").value;
+  var expirationMonth = document.getElementById("card-expiration-month").value;
+  var expirationYear = document.getElementById("card-expiration-year").value;
+  var ccv = document.getElementById("card-ccv").value;
+
+  if (cardNumber1 === "" || cardNumber2 === "" || cardNumber3 === "" || cardNumber4 === "" || cardHolder === "" || expirationMonth === "" || expirationYear === "" || ccv === "") {
+    document.getElementById("alert_pago_linea").style.display = "block";
+    return false; 
+  }
+
+  return true;
+}
 </script>
 
 @endsection
