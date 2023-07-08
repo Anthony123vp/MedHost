@@ -18,7 +18,7 @@
 								<div class="contact-wrap w-100 p-md-5 p-4">
 								<div style="display:flex;justify-content:space-between;">
 									<h3 class="mb-4">Reservar Cita</h3>
-									<h3 class="mb-4" id="precioServicio">Reservar Cita</h3>
+									<h3 class="mb-4" id="precioServicio">Precio</h3>
 								</div>
 									
 
@@ -185,7 +185,7 @@
 		const data = await response.json();
 		let option = `<option value=""disabled selected>Seleccione una opcion</option>`;
 		data.forEach(element=>{
-			option= option + `<option value="${element.id_medico_horario}">${element.fecha}->${element.hora_inicio} - ${element.hora_final}</option>`
+			option= option + `<option value="${element.id_medico_horario}">${element.fecha} : ${element.hora_inicio} - ${element.hora_final}</option>`
 		});
 		medico_horarios.innerHTML = option;
     });

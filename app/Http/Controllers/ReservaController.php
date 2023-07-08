@@ -43,12 +43,12 @@ class ReservaController extends Controller
     }
 
     public function getMedicos($especialidad){
-        $medicos=Medico::where('id_especialidad',$especialidad)->get();
+        $medicos=Medico::with('especialidad')->where('id_especialidad',$especialidad)->get();
         return response()->json($medicos);
     }
 
     public function getHorarioMedico($medico){
-        $horario_medico = DB::select(" SELECT * FROM HORARIO_MEDICO WHERE id_medico=$medico and estado=1");
+        $horario_medico = DB::select("SELECT id_medico_horario,id_medico,nombres,DATE_FORMAT(fecha,'%a-%e') as fecha,date_format(hora_inicio,'%H:%i') as hora_inicio,date_format(hora_final,'%H:%i %p') as hora_final FROM HORARIO_MEDICO WHERE id_medico=$medico and estado=1;");
         return response()->json($horario_medico);
     }
 
