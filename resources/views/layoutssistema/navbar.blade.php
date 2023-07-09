@@ -200,7 +200,7 @@
     </nav>
 
     <section class="home">
-        <div class="text">Dashboard Medhost System</div>
+        <div class="text">Medhost System</div>
         <div class="content">
           @yield('content')
           @yield('navbar_usuarios')
