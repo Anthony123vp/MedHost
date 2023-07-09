@@ -16,16 +16,14 @@
         <img class="img_dash" style='width:95%;height:120px;'  src="Imagenes/dash6.jpeg" alt="">
     </div>
     <div style='width:100%;display:flex;height:500px;align-items:center;justify-content:space-evenly;'>
-            <img class="img_dash" style='width:30%;height:90%;'  src="Imagenes/dash7.jpeg" alt="">
-            <img class="img_dash" style='width:30%;height:90%;'  src="Imagenes/dash8.jpeg" alt="">
-            <img class="img_dash" style='width:30%;height:90%;'  src="Imagenes/dash9.jpeg" alt="">
-        </div>
+        <img class="img_dash" style='width:30%;height:90%;'  src="Imagenes/dash7.jpeg" alt="">
+        <img class="img_dash" style='width:30%;height:90%;'  src="Imagenes/dash8.jpeg" alt="">
+        <img class="img_dash" style='width:30%;height:90%;'  src="Imagenes/dash9.jpeg" alt="">
+    </div>
+    <div style='width:100%;display:flex;height:600px;align-items:center;justify-content:space-evenly;'>
+        <img class="img_dash" style='width:95%;height:90%;'  src="Imagenes/dash10.jpeg" alt="">
+    </div>
 </main>
-<script>
-      $(document).ready(function() {
-    $('#myModal').modal('show');
-  });
-</script>
 <style>
     .img_dash{
         -webkit-box-shadow: 0px 1px 6px 4px rgba(153,153,153,1);

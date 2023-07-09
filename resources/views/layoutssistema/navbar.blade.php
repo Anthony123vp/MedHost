@@ -151,10 +151,10 @@
             <div class="bottom-content">
 
             @auth
-            <form method="POST" action="{{ route('Logout')}}">
+            <form id='logoutForm' method="POST" action="{{ route('Logout')}}">
             @csrf
                 <li class="">
-                    <a>
+                    <a href="#" onclick="submitForm_logout(event)">
                         <i class='bx bx-log-out icon' ></i>
                         <button type="Submit"><span class="text nav-text">Logout</span></button>
                     </a>
@@ -241,6 +241,12 @@
 
   doc.save('Reporte.pdf');
 }
+
+function submitForm_logout(event) {
+    event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
+
+    document.getElementById('logoutForm').submit(); // Enviar el formulario
+  }
 </script>
 @yield('scripts')
 
