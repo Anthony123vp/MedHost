@@ -25,7 +25,6 @@
                             <div class="btn-especialidad">Doctor</div>
                             <div class="Informacion-Doctor">
                                 <p><i class="fa-solid fa-hospital"></i> Años de Experiencia: <b>10</b></p>
-                                <p><i class='bx bxl-linkedin-square' ></i></p>
                             </div>
                         </div>
                     </div>
@@ -62,7 +61,6 @@
                             <div class="btn-especialidad">Doctor</div>
                             <div class="Informacion-Doctor">
                                 <p><i class="fa-solid fa-hospital"></i> Años de Experiencia: <b>10</b></p>
-                                <p><i class='bx bxl-linkedin-square' ></i></p>
                             </div>
                         </div>
                     </div>

@@ -5,28 +5,38 @@ namespace App\Http\Controllers;
 use App\Models\Recepcionista;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RecepcionistaController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',['only'=>['index','create','edit','store','update']]);
     }
-
+    
     public function index()
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         $recepcionistas = Recepcionista::all();
         return view('recepcionistas.index', compact('recepcionistas'));
     }
 
     public function create()
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         return view('recepcionistas.create');
     }
 
     public function store(Request $request)
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         // $request->validate([
         //     'nombres' => 'required',
         //     'ape_paterno' => 'required',
@@ -94,6 +104,9 @@ class RecepcionistaController extends Controller
 
     public function edit($id)
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         $recepcionista = Recepcionista::findOrFail($id);
         $id_user = $recepcionista->id_user;
         $usuario = Usuario::findOrFail($id_user);
@@ -103,6 +116,9 @@ class RecepcionistaController extends Controller
     
     public function edit2($id)
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         $recepcionista = Recepcionista::findOrFail($id);
         // return view('recepcionistas.destroy', compact('recepcionista'));
         return redirect()->route('recepcionistas.destroy', ['id' => $id]);
@@ -164,6 +180,9 @@ class RecepcionistaController extends Controller
 
     public function update(Request $request, $id)
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         $request->validate([
             'nombres' => 'required|unique:recepcionistas,nombres,'.$id.',id_recepcionista',
             'ape_paterno' => 'required',
@@ -210,6 +229,9 @@ class RecepcionistaController extends Controller
         // $recepcionista->updated_at = now();
         // $recepcionista->save();
 
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         $recepcionista = Recepcionista::findOrFail($id);
         $idUsuario = $recepcionista->id_user;
 

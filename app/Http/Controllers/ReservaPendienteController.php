@@ -12,7 +12,7 @@ class ReservaPendienteController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',['only'=>['index','create','edit','store','update']]);
     }
 
     public function index(){
@@ -28,6 +28,9 @@ class ReservaPendienteController extends Controller
 
     public function edit($id)
     {
+        if(Auth::user()->id_rol!=1){
+            return redirect()->route('Dashboard');
+        }
         $monto = PagoPendiente::findOrFail($id);
         
         return view('Paciente_botones\pagos_pendiente\edit', compact('monto'));
@@ -35,6 +38,9 @@ class ReservaPendienteController extends Controller
 
     public function update(Request $request, $id)
     {
+        if(Auth::user()->id_rol!=1){
+            return redirect()->route('Dashboard');
+        }
         $pago = PagoPendiente::findOrFail($id);
         $pago->update([
             'estado' => 0,

@@ -8,28 +8,38 @@ use App\Models\Administrador;
 use App\Models\Recepcionista;
 use App\Models\Medico;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
-    // public function index()
-    // {
-    //     $usuarios = Usuario::all();
-    //     return view('usuarios.index', compact('usuarios'));
-    // }
+    
+    public function __construct()
+    {
+        $this->middleware('auth',['only'=>['index','create','edit','store','update']]);
+    }
     
     public function index()
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         $usuarios = Usuario::with('rol')->get();
         return view('usuarios.index', compact('usuarios'));
     }
 
     public function create()
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         return view('usuarios.create');
     }
 
     public function store(Request $request)
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         $request->validate([
             'password' => 'required',
             'password_2' => 'required',
@@ -45,6 +55,9 @@ class UsuarioController extends Controller
 
     public function show($id)
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         $usuario = Usuario::findOrFail($id);
         return view('usuarios.show', compact('usuario'));
     } 
@@ -52,18 +65,27 @@ class UsuarioController extends Controller
 
     public function edit($id)
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         $usuario = Usuario::findOrFail($id);
         return view('usuarios.edit', compact('usuario'));
     }
     
     public function edit2($id)
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         $usuario = Usuario::findOrFail($id);
         return view('usuarios.destroy', compact('usuario'));
     }
 
     public function update(Request $request, $id)
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         $request->validate([
             'email' => 'required|unique:users,email,'.$id.',id_usuarios',
             'password_1' => 'required',
@@ -87,6 +109,9 @@ class UsuarioController extends Controller
     
     public function activate($id)
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         $usuario = Usuario::findOrFail($id);
         $usuario->estado = 1;
         $usuario->updated_at = now();
@@ -128,6 +153,9 @@ class UsuarioController extends Controller
 
     public function destroy($id)
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         // $usuario = Usuario::findOrFail($id);
         // $usuario->estado = 0;
         // $usuario->save();

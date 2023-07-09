@@ -106,14 +106,14 @@
                     <li class="nav-link">
                         <a href="{{ route('citas_pendiente.index') }}">
                             <i class='bx bx-calendar-plus icon' ></i>
-                            <span class="text nav-text">Citas</span>
+                            <span class="text nav-text">Citas Pendientes</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="{{ route('ReservaPacienteIndex') }}">
-                            <i class='bx bx-calendar-plus icon' ></i>
-                            <span class="text nav-text">Reservas</span>
+                            <i class='bx bxs-face-mask icon'></i>
+                            <span class="text nav-text">Reservar Cita</span>
                         </a>
                     </li>
                 <!--End Paciente-->
@@ -123,21 +123,21 @@
                 @if(Auth::user()->id_rol===2)
                  <!--Administrador-->
                     <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-wallet icon' ></i>
+                        <a href="{{ route('medicos.index')}}">
+                            <i class='bx bxs-face-mask'></i>
                             <span class="text nav-text">Medicos</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{{route('recepcionistas.index')}}">
                             <i class='bx bx-wallet icon' ></i>
                             <span class="text nav-text">Recepcionistas</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{{route('usuarios.index')}}">
                             <i class='bx bx-wallet icon' ></i>
                             <span class="text nav-text">Usuarios</span>
                         </a>

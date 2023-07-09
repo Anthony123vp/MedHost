@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 @endsection
 @section('content')
-    <div class="citas_pendientes">
+<div class="citas_pendientes">
     @foreach ($citas as $cita)
     @if ( $cita->servicio == 'Cita_Medica')
 
@@ -91,16 +91,11 @@
           @endif
       
     @elseif($cita->servicio == 'Examen')   
-      <!-- -------------------------------------------------- -->
-
-
-
-      <!-- ------------------------------------------- -->
-
+    
 
       @if ($cita->pago_estado == 1) 
           @elseif ( $cita->pago_estado == 0)
-        <div class="card">
+      <div class="card">
         <div class="header">
           <div>
             <a class="title">
@@ -177,16 +172,16 @@
         @endif
       @endif
         
-      </div> 
+    </div> 
 
-      @elseif($cita->servicio == 'Terapia')   
+    @elseif($cita->servicio == 'Terapia')   
       <!-- -------------------------------------------------- -->
        <!-- ------------------------------------------- -->
 
 
        @if ($cita->pago_estado == 1) 
           @elseif ( $cita->pago_estado == 0)
-          <div class="card">
+     <div class="card">
         <div class="header">
           <div>
             <a class="title">
@@ -263,11 +258,11 @@
         @endif
       @endif
         
-      </div> 
+    </div> 
     @endif
-    @endforeach
+  @endforeach
 
-    </div>
+</div>
 @endsection
 <style>
   .whatsapp {
