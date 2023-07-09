@@ -23,6 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('Reserva/{especialidad}/{servicio}',[ReservaController::class,'Tipo_Servicio']);
 Route::get('Reserva/{id}',[ReservaController::class,'PrecioServicio']);
 Route::get('Paciente/{dni}/Reserva',[ReservaController::class,'InformacionPaciente']);
+Route::get('Medico/{id}/Informacion',[ReservaController::class,'InformacionMedico']);
+
 
 Route::get('Medico/{especialidad}',[ReservaController::class,'getMedicos']);
 Route::get('Medico/{medico}/Horarios',[ReservaController::class,'getHorarioMedico']);

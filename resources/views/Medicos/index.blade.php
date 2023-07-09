@@ -28,9 +28,8 @@
                 <thead>
                     <tr>
                         <th> Nº </th>
-                        <th> Nombres </th>
-                        <th> Apellido Paterno </th>
-                        <th> Apellido Materno </th>
+                        <th> Foto </th>
+                        <th> Medico </th>
                         <th> DNI </th>
                         <th> Especialidad </th>
                         <th> Consultorio </th>
@@ -52,9 +51,8 @@
                     @foreach ($medicos as $medico)
                     <tr>
                         <td>{{ $id }}</td>
-                        <td>{{ $medico->nombres }}</td>
-                        <td>{{ $medico->ape_paterno }}</td>
-                        <td>{{ $medico->ape_materno }}</td>
+                        <td><img class="foto_medico" src="/medicos_imagenes/{{$medico->imagen}}"></td>
+                        <td>{{ $medico->nombres }} {{$medico->ape_paterno}} {{$medico->ape_materno}}</td>
                         <td>{{ $medico->dni }}</td>
                         <td><button type="button" class='boton_especialidad'>{{ $medico->especialidad->nombre }}</button></td>
                         @if ($medico->estado==1)

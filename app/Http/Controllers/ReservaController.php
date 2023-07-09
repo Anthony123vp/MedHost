@@ -32,17 +32,23 @@ class ReservaController extends Controller
     
     public function InformacionPaciente(String $dni){
         $paciente = DB::select("SELECT * FROM paciente INNER JOIN insurances ON (paciente.id_insurance = insurances.id_insurance) where  dni=$dni");
-        // $paciente = Paciente::where('dni',$dni)->get();
         return response()->json($paciente);
     }
 
+    public function InformacionMedico($id){
+         $medicos = Medico::with('especialidad','consultorio')->where('id_medico',$id)->FirstOrFail();
+;
+        // $paciente = Paciente::where('dni',$dni)->get();
+        return response()->json($medicos);
+    }
+
     public function getMedicos($especialidad){
-        $medicos=Medico::where('id_especialidad',$especialidad)->get();
+        $medicos=Medico::with('especialidad')->where('id_especialidad',$especialidad)->get();
         return response()->json($medicos);
     }
 
     public function getHorarioMedico($medico){
-        $horario_medico = DB::select(" SELECT * FROM HORARIO_MEDICO WHERE id_medico=$medico and estado=1");
+        $horario_medico = DB::select("SELECT id_medico_horario,id_medico,nombres,DATE_FORMAT(fecha,'%a-%e') as fecha,date_format(hora_inicio,'%H:%i') as hora_inicio,date_format(hora_final,'%H:%i %p') as hora_final FROM HORARIO_MEDICO WHERE id_medico=$medico and estado=1;");
         return response()->json($horario_medico);
     }
 
@@ -85,10 +91,8 @@ class ReservaController extends Controller
             'dni'=>'required',
             'servicio_medhost'=>'required',
             'medico_horario'=>'required',
-            'consultorio'=>'required',
             'modalidad'=>'required'
         ]);
-
         /** Consiguiendo el Id del paciente por medio del dni*/
         $paciente = Paciente::where('dni',$request->dni)->firstOrFail();
         $id_paciente = $paciente->id_paciente;

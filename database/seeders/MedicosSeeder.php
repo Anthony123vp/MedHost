@@ -26,7 +26,7 @@ class MedicosSeeder extends Seeder
         $medico->celular = '987325698';
         $medico->dni = '75359524';
         $medico->f_nacimiento = '2000-01-01';
-        $medico->imagen='20230529040324.jpg';
+        $medico->imagen='20230707230813.png';
         $medico->estado = '1';
         $medico->created_at = now();
         $medico->updated_at = now();

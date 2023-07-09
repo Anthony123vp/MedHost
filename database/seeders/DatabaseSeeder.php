@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,6 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::statement("SET lc_time_names = 'es_ES'");
+
         $this->call(UserSeeder::class);
         $this->call(RolesSeeder::class);
         $this->call(RecepcionistasSeeder::class);

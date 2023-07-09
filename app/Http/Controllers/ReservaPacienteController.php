@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Especialidad;
 use Illuminate\Http\Request;
 use App\Models\Medico;
 use App\Models\Servicio;
@@ -25,7 +26,8 @@ class ReservaPacienteController extends Controller
     public function index()
     {
         $medicos=Medico::get(); 
-        return view('Paciente_botones.CrearCita.index',['medicos' => $medicos]);
+        $especialidades=Especialidad::get();
+        return view('Paciente_botones.CrearCita.index',['medicos' => $medicos,'especialidades'=>$especialidades]);
     }
 
     /**
@@ -46,7 +48,6 @@ class ReservaPacienteController extends Controller
      */
     public function store(Request $request, $id_paciente)
     {
-
 
             $reserva = new Reserva();
             $reserva->id_paciente=$id_paciente;
@@ -69,7 +70,7 @@ class ReservaPacienteController extends Controller
             $pago_pendiente -> save();
             
 
-            return redirect()->route('reservas.index');
+            return redirect()->route('citas_pendiente.index');
 
             
         
