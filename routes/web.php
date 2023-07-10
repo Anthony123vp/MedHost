@@ -54,6 +54,7 @@ Route::view('/pagos_pendiente','Paciente_botones.pagos_pendiente.index')->name('
 
 // Route::view('/Login_Sign_User', 'Sistema.log_sign' )->name('Login_Sign_User');
 Route::get('/log_sign', [SistemaController::class,'index'])->name('login')->middleware('web');
+Route::post('/log_sign', [SistemaController::class, 'store'])->name('login.store');
 
 /*AUTENTICACION DE USUARIO */
 // Route::view('/Login_Sign_User', 'Sistema.log_sign' )->name('login');

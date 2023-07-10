@@ -61,7 +61,7 @@
       <div class="signup hide">
           <h2>REGISTRO PACIENTE</h2>
           <div class="inputbox">
-            <form action="{{ route('pacientes.store')}}" class='needs-validation' novalidate method="POST">
+            <form action="{{ route('login.store')}}" class='needs-validation' novalidate method="POST">
               @csrf
               <div style='width:100%;display:flex;justify-content:space-between;margin-bottom:20px;'>
                 <div style='width:49.5%;height:auto;display:flex;flex-direction:column;'>
