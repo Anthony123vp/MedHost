@@ -1,3 +1,7 @@
+.CajaMedicos{
+  display: flex;
+  flex-direction: column;
+}
 .Medicos{
   display: flex;
   flex-wrap: wrap;
@@ -48,6 +52,7 @@ select {
     font-family: inherit;
     font-size: 16px;
     transition: all 150ms ease;
+    align-self: center;
 }
 .medico h2{
     text-align: center;
