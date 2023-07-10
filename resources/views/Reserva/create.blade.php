@@ -256,10 +256,9 @@
 		telefono_medico.innerText = medico_informacion["celular"];
 		consultorio_medico.innerHTML = '<span>Consultorio: </span>'+ medico_informacion["consultorio"]["cod_habitacion"];
 		doctor.style.display="block";
-		console.log(medico_informacion);
 
 		/*Selecciona al primer medico que aparece en el select option y muestra sus horarios*/
-		const responseHorario = await fetch(`/api/Medico/1/Horarios`);
+		const responseHorario = await fetch(`/api/Medico/${medico.value}/Horarios`);
 		const datahorario = await responseHorario.json();
 		let optionhorario = ``;
 		datahorario.forEach(element=>{

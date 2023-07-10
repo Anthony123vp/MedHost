@@ -131,15 +131,28 @@
 
                     <li class="nav-link">
                         <a href="{{route('recepcionistas.index')}}">
-                            <i class='bx bx-wallet icon' ></i>
+                            <i class='bx bx-female icon' ></i>
                             <span class="text nav-text">Recepcionistas</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="{{route('usuarios.index')}}">
-                            <i class='bx bx-wallet icon' ></i>
+                            <i class='bx bxs-user-circle icon' ></i>
                             <span class="text nav-text">Usuarios</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="{{route('insurances.index')}}">
+                            <i class='bx bxs-book-alt icon' ></i>
+                            <span class="text nav-text">Seguros</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{{route('serviciosmedhost.index')}}">
+                            <i class='bx bx-first-aid icon'></i>
+                            <span class="text nav-text">Servicios</span>
                         </a>
                     </li>
                  <!--End Administrator-->
