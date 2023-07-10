@@ -299,7 +299,7 @@ body.dark .switch::before{
 .home .content{
   display: flex;
   justify-content: space-between;
-  height: 86vh;
+  height: auto;
   align-items: center;
   flex-direction: column;
 }

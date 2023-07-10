@@ -136,7 +136,7 @@
 											<span class="fa fa-graduation-cap"></span>
 										</div>
 										<div class="text pl-3">
-											<p><span>Estudios:</span> Universidad Nacional Mayor de San Marcos.
+											<p style="color:#ccc;"><span>Estudios:</span> Universidad Nacional Mayor de San Marcos.
 											</p>
 										</div>
 									</div>

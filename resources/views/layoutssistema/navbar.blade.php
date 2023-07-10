@@ -124,7 +124,7 @@
                  <!--Administrador-->
                     <li class="nav-link">
                         <a href="{{ route('medicos.index')}}">
-                            <i class='bx bxs-face-mask'></i>
+                            <i class='bx bxs-face-mask icon'></i>
                             <span class="text nav-text">Medicos</span>
                         </a>
                     </li>
