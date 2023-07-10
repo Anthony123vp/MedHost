@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/sistema.css">
     <link rel="stylesheet" href="/css/editar.css">
     <link rel="shortcut icon" href="/imagenes/logo_new.jpeg">
-
+    <link rel="stylesheet" href="{{ asset('css/dashindex.css') }}">
     
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -199,8 +199,8 @@
 
     </nav>
 
-    <section class="home">
-        <div class="text">Medhost System</div>
+    <section class="home" style="background: white;">
+        <div class="text"></div>
         <div class="content">
           @yield('content')
           @yield('navbar_usuarios')
