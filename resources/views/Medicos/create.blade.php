@@ -12,30 +12,48 @@
                 <div class="user-box">
                     <input required="" name="nombres" type="text" value="{{ old('nombres') }}">
                     <label>Nombres</label>
+                    @error('nombres')
+                    <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="user-box">
                     <input required="" name="ape_paterno" type="text" value="{{ old('ape_paterno') }}">
                     <label>Apellido Paterno</label>
+                    @error('ape_paterno')
+                    <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class='contenedor_flex'>
                 <div class="user-box">
                     <input required="" name="ape_materno" type="text" value="{{ old('ape_materno') }}">
                     <label>Apellido Materno</label>
+                    @error('ape_materno')
+                    <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="user-box">
                     <input required="" name="dni" type="number" value="{{ old('dni') }}">
                     <label>DNI</label>
+                    @error('dni')
+                    <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class='contenedor_flex'>
                 <div class="user-box">
                     <input required="" name="celular" type="number" value="{{ old('celular') }}">
                     <label>Celular</label>
+                    @error('celular')
+                    <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="user-box">
                     <input required="" name="f_nacimiento" type="date"  value="{{ old('f_nacimiento') }}">
                     <label>Fecha Nacimiento</label>
+                    @error('f_nacimiento')
+                    <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class='contenedor_flex'>
@@ -46,20 +64,32 @@
                         <option value="F">Femenino</option>
                         <option value="X">Prefiero no decirlo</option>
                     </select>
+                    @error('sexo')
+                    <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="user-box">
                     <input required="" name="email" type="email" value="{{ old('email') }}">
                 <label>Email</label>
+                @error('email')
+                    <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class='contenedor_flex'>
                 <div class="user-box">
                 <input required="" name="password" type="password" value="{{ old('password') }}" >
                 <label>Password</label>
+                @error('password')
+                    <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="user-box">
                 <input required="" name="password_2" type="password"  value="{{ old('password_2') }}">
                 <label>Repite Password</label>
+                @error('password_2')
+                    <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class='contenedor_flex'>
@@ -70,16 +100,28 @@
                             <option value="{{ $especialidad->id_especialidad }}">{{ $especialidad->nombre }}</option>
                         @endforeach
                     </select>
+                    @error('id_especialidad')
+                    <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
                 
                 <div class="user-box">
                     <select name="id_consultorio" id="id_consultorio">
                         <option value="">CONSULTORIO</option>
                     </select>
+                    @error('id_consultorio')
+                    <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
-                <input name="imagen" id="imagen" type="file"/>
             </div>
-            
+
+            <div class="contenedor_flex" style="width:520px; margin:auto; ">
+                <input class="imagen_medico" name="imagen" id="imagen"  required type="file"/>
+            </div>
+            @error('imagen')
+                    <div class="error-message">{{ $message }}</div>
+            @enderror
+                
             <button class='boton_send' type="submit">
                 <div class="svg-wrapper-1">
                     <div class="svg-wrapper">

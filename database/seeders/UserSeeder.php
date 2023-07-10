@@ -20,33 +20,33 @@ class UserSeeder extends Seeder
 
         $user1 = new Usuario();
         $user1->id_rol = 1;
-        $user1->email = 'usuario1@example.com';
-        $user1->password = bcrypt('contraseña1');
-        $user1->password_2 = bcrypt('contraseña1');
+        $user1->email = 'paciente@example.com';
+        $user1->password = bcrypt('paciente');
+        $user1->password_2 = bcrypt('paciente');
         $user1->estado = '1';
         $user1->save();
         
         $user2 = new Usuario();
         $user2->id_rol = 2;
-        $user2->email = 'usuario2@example.com';
-        $user2->password = bcrypt('contraseña2');
-        $user2->password_2 = bcrypt('contraseña2');
+        $user2->email = 'administrador@example.com';
+        $user2->password = bcrypt('administrador');
+        $user2->password_2 = bcrypt('administrador');
         $user2->estado = '1';
         $user2->save();
 
         $user3 = new Usuario();
         $user3->id_rol = 3;
-        $user3->email = 'usuario3@example.com';
-        $user3->password = bcrypt('contraseña3');
-        $user3->password_2 = bcrypt('contraseña3');
+        $user3->email = 'recepcionista@example.com';
+        $user3->password = bcrypt('recepcionista');
+        $user3->password_2 = bcrypt('recepcionista');
         $user3->estado = '1';
         $user3->save();
 
         $user4 = new Usuario();
         $user4->id_rol = 4;
-        $user4->email = 'usuario4@example.com';
-        $user4->password = bcrypt('contraseña4');
-        $user4->password_2 = bcrypt('contraseña4');
+        $user4->email = 'medico@example.com';
+        $user4->password = bcrypt('medico');
+        $user4->password_2 = bcrypt('medico');
         $user4->estado = '1';
         $user4->save();
 

@@ -350,6 +350,21 @@ option{
     transition: all 0.2s;
 }
 
+.imagen_medico{
+    font-family: inherit;
+    font-size: 18px;
+    background:  #345b63;
+    color: white;
+    padding: 10px 80px;
+    padding-left: 0.5em;
+    cursor:pointer;
+    display: flex;
+    align-items: center;
+    border: 2px dashed #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+}
 .boton_send span {
     display: block;
     margin-left: 0.3em;
