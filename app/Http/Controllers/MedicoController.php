@@ -7,30 +7,38 @@ use App\Models\Usuario;
 use App\Models\Medico;
 use App\Models\Especialidad;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MedicoController extends Controller
 {
-    // public function index()
-    // {
-    //     $medicos = Medico::all();
-    //     return view('medicos.index', compact('medicos'));
-    // }
-    
+    public function __construct()
+    {
+        $this->middleware('auth',['only'=>['index','create','edit','store','update']]);
+    }
     
     public function index()
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         $medicos = Medico::with('especialidad','consultorio')->get();
         return view('medicos.index', compact('medicos'));
     }
 
     public function create()
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         $especialidades = Especialidad::all();
         return view('medicos.create', compact('especialidades'));
     }
 
     public function store(Request $request)
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         // $request->validate([
         //     'dni' => 'required|unique:personas',
         //     'nombres' => 'required',
@@ -121,6 +129,9 @@ class MedicoController extends Controller
 
     public function show($id)
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         $medico = Medico::findOrFail($id);
         return view('medicos.show', compact('medico'));
 
@@ -129,6 +140,9 @@ class MedicoController extends Controller
 
     public function edit($id)
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         // $medico = Medico::findOrFail($id);
         // return view('medicos.edit', compact('medico'));
 
@@ -210,6 +224,9 @@ class MedicoController extends Controller
 
     public function destroy($id)
     {
+        if (Auth::user()->id_rol!=2){
+            return redirect('Dashboard');
+        }
         // $medico = Medico::findOrFail($id);
         // $medico->delete();
 

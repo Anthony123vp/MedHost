@@ -6,17 +6,20 @@ use App\Models\Paciente;
 use App\Models\Usuario;
 use App\Models\Insurance;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PacienteController extends Controller
 {
-    // public function index()
-    // {
-    //     $pacientes = Paciente::all();
-    //     return view('pacientes.index', compact('pacientes'));
-    // }
-
+    
+    public function __construct()
+    {
+        $this->middleware('auth',['only'=>['index','create','edit','store','update']]);
+    }
     public function index()
     {
+        if (Auth::user()->id_rol!=3){
+            return redirect('Dashboard');
+        }
         $pacientes = Paciente::with('insurance')->get();
         return view('pacientes.index', compact('pacientes'));
     }
@@ -28,6 +31,9 @@ class PacienteController extends Controller
 
     public function create()
     {
+        if (Auth::user()->id_rol!=3){
+            return redirect('Dashboard');
+        }
         $insurances = Insurance::all();
         return view('pacientes.create', compact('insurances'));
     }
@@ -35,7 +41,9 @@ class PacienteController extends Controller
     public function store(Request $request)
     {
         
-
+        if (Auth::user()->id_rol!=3){
+            return redirect('Dashboard');
+        }
         $request->validate([
             'email' => 'required|unique:users',
             'password' => 'required',
@@ -86,6 +94,9 @@ class PacienteController extends Controller
 
     public function show($id)
     {
+        if (Auth::user()->id_rol!=3){
+            return redirect('Dashboard');
+        }
         $paciente = Paciente::findOrFail($id);
         return view('pacientes.show', compact('paciente'));
     } 
@@ -108,7 +119,9 @@ class PacienteController extends Controller
     {
         // $paciente = Paciente::findOrFail($id);
         // return view('pacientes.edit', compact('paciente'));
-
+        if (Auth::user()->id_rol!=3){
+            return redirect('Dashboard');
+        }
 
         $paciente = Paciente::findOrFail($id);
         $id_user = $paciente->id_user;
@@ -157,7 +170,9 @@ class PacienteController extends Controller
         // $paciente->update($request->all());
 
         // ---------------------------------
-
+        if (Auth::user()->id_rol!=3){
+            return redirect('Dashboard');
+        }
         $request->validate([
             'nombres' => 'required|unique:paciente,nombres,'.$id.',id_paciente',
             'ape_paterno' => 'required',
@@ -209,7 +224,9 @@ class PacienteController extends Controller
         // $paciente->estado = 0;
         // $paciente->updated_at = now();
         // $paciente->save();
-
+        if (Auth::user()->id_rol!=3){
+            return redirect('Dashboard');
+        }
 
         $paciente = Paciente::findOrFail($id);
         $idUsuario = $paciente->id_user;

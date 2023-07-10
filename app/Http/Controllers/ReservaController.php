@@ -20,6 +20,11 @@ use Illuminate\Support\Facades\Auth;
 class ReservaController extends Controller
 {
     
+    public function __construct()
+    {
+        $this->middleware('auth',['only'=>['index','create','edit','store','update']]);
+    }
+
     public function Tipo_Servicio($servicio,$especialidad){
         $consulta = DB::select("SELECT * FROM SERVICIOMEDHOST where  id_servicio=$servicio and id_especialidad=$especialidad");
         return response()->json($consulta);
@@ -67,6 +72,9 @@ class ReservaController extends Controller
      */
     public function index()
     {   
+        if (Auth::user()->id_rol!=3){
+            return redirect('Dashboard');
+        }
         $reservas=DB::select("SELECT * FROM CITA_MEDICA_RECEPCIONISTA");
 
         return view('Reserva.index',['reservas'=>$reservas]);
@@ -77,6 +85,9 @@ class ReservaController extends Controller
      */
     public function create()
     {
+        if (Auth::user()->id_rol!=3){
+            return redirect('Dashboard');
+        }
         $servicios=Servicio::get();
         $especialidades=Especialidad::get();
         return view('Reserva.create',['servicios'=>$servicios,'especialidades'=>$especialidades]);
@@ -87,6 +98,10 @@ class ReservaController extends Controller
      */
     public function store(Request $request)
     {  
+        if (Auth::user()->id_rol!=3){
+            return redirect('Dashboard');
+        }
+        
         $request->validate([
             'dni'=>'required',
             'servicio_medhost'=>'required',

@@ -22,10 +22,9 @@
                             <h2>{{ $medico->especialidad->nombre}}</h2>
                             <div class="imagen"><img src="/medicos_imagenes/{{$medico->imagen}}" alt=""></div>
                             <h3>{{ $medico->nombres}} {{$medico->ape_paterno}}</h3>
-                            <div class="btn-especialidad">Doctor</div>
+                            <div style="color:#fff;" class="btn-especialidad">Doctor</div>
                             <div class="Informacion-Doctor">
                                 <p><i class="fa-solid fa-hospital"></i> Años de Experiencia: <b>10</b></p>
-                                <p><i class='bx bxl-linkedin-square' ></i></p>
                             </div>
                         </div>
                     </div>
@@ -62,7 +61,6 @@
                             <div class="btn-especialidad">Doctor</div>
                             <div class="Informacion-Doctor">
                                 <p><i class="fa-solid fa-hospital"></i> Años de Experiencia: <b>10</b></p>
-                                <p><i class='bx bxl-linkedin-square' ></i></p>
                             </div>
                         </div>
                     </div>

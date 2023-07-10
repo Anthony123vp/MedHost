@@ -20,11 +20,14 @@ class ReservaPacienteController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',['only'=>['index','create','edit','store','update']]);
     }
 
     public function index()
     {
+        if (Auth::user()->id_rol!=1){
+            return redirect('Dashboard');
+        }
         $medicos=Medico::get(); 
         $especialidades=Especialidad::get();
         return view('Paciente_botones.CrearCita.index',['medicos' => $medicos,'especialidades'=>$especialidades]);
@@ -35,6 +38,9 @@ class ReservaPacienteController extends Controller
      */
     public function create($id)
     {
+        if (Auth::user()->id_rol!=1){
+            return redirect('Dashboard');
+        }
         $medico=Medico::where('id_medico',$id)->FirstOrFail();
         $id_user=Auth::user()->id_user;
         $paciente=Paciente::where('id_user',$id_user)->firstOrFail();
@@ -49,7 +55,10 @@ class ReservaPacienteController extends Controller
     public function store(Request $request, $id_paciente)
     {
 
-            $reserva = new Reserva();
+        if (Auth::user()->id_rol!=1){
+            return redirect('Dashboard');
+        }       
+        $reserva = new Reserva();
             $reserva->id_paciente=$id_paciente;
             $reserva->id_servicio_medhost=$request->servicio_medhost;
             $reserva->id_medico_horario=$request->medico_horario;

@@ -15,12 +15,14 @@ class HorarioController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
-
+        $this->middleware('auth',['only'=>['index','create','edit','store','update']]);
     }
 
     public function index()
     {   
+        if (Auth::user()->id_rol!=4){
+            return redirect('Dashboard');
+        }
         $id_user=Auth::user()->id_user;
         $medico=Medico::where('id_user',$id_user)->firstOrFail();
         $id_medico=$medico->id_medico;
@@ -45,6 +47,9 @@ class HorarioController extends Controller
      */
     public function store(Request $request)
     {
+        if (Auth::user()->id_rol!=4){
+            return redirect('Dashboard');
+        }
         $request->validate([
             'fecha'=>'required',
             'hora_inicio'=>'required',
