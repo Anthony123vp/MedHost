@@ -88,7 +88,7 @@
             @endif
             
           </div> 
-          @endif
+            @endif
       
     @elseif($cita->servicio == 'Examen')   
     
@@ -170,9 +170,9 @@
           
         @elseif( $cita->modalidad == 'presencial')   
         @endif
+      </div> 
       @endif
         
-    </div> 
 
     @elseif($cita->servicio == 'Terapia')   
       <!-- -------------------------------------------------- -->
@@ -259,7 +259,7 @@
       @endif
         
     </div> 
-    @endif
+      @endif
   @endforeach
 
 </div>
