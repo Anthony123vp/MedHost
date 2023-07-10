@@ -57,8 +57,6 @@ class PacienteController extends Controller
             'password' => bcrypt($request->input('password')),
             'password_2' => bcrypt($request->input('password_2')),
         ]);
-        
-        dd($request->input('email'));
 
         $id_usuarios = $usuario->id_user;
 
