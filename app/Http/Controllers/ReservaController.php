@@ -42,7 +42,7 @@ class ReservaController extends Controller
 
     public function InformacionMedico($id){
          $medicos = Medico::with('especialidad','consultorio')->where('id_medico',$id)->FirstOrFail();
-;
+
         // $paciente = Paciente::where('dni',$dni)->get();
         return response()->json($medicos);
     }
