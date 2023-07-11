@@ -24,8 +24,8 @@
 									<div id="form-message-success" class="mb-4">
 										Your message was sent, thank you!
 									</div>
-									<form method="POST" action="{{route('reservas.store')}}"  class="contactForm">
-									@csrf
+									<form method="POST" action="{{route('reservas.update',$reserva[0]->id_reserva	)}}"  class="contactForm">
+									@csrf @method("PATCH")
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group">
@@ -33,8 +33,12 @@
 													<select class="form-control" name="modalidad">
 														@if($reserva[0]->modalidad == "presencial")
 														<option value="presencial" selected>Presencial</option>
+														<option value="virtual" >Virtual</option>
+
 														@else
 														<option value="virtual" selected>Virtual</option>
+														<option value="presencial" >Presencial</option>
+
 													@endif
 
 													</select>
@@ -145,11 +149,12 @@
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
-													<input type="submit" value="Reservar" class="btn btn-primary">
+													<input type="submit" value="ACTUALIZAR" class="btn btn-primary">
 													<div class="submitting"></div>
 												</div>
 											</div>
 										</div>
+										<input style="display:none;" type="text" name="consultorio" id="consultorio">
 									</form>
 								</div>
 							</div>
@@ -233,7 +238,7 @@
 				dataxd.forEach(element=>{
 					option= option + `${element.precio} soles`
 				});
-				precioServicio.value = option;
+				precioServicio.innerText = option;
 
 
 		/*rellena los options del select medico*/
@@ -270,11 +275,11 @@
 		});
 		medico_horarios.innerHTML = optionhorario;
 
-		
-		/*Muestra el consultorio del primer medico seleccionado que aparece*/
+		/*Muestra el consultorio del medico seleccionado*/
 		let consultorio_disponible='';
 		const consultorioresponse= await fetch(`/api/Consultorios/${medico.value}`);
 		const consultorios = await consultorioresponse.json()
+
 		consultorio.value = consultorios['cod_habitacion'];
 
 	};
@@ -315,6 +320,19 @@
 		medico.innerHTML = option_medico;
 
 
+		/* Muestra la Informacion del Medico en la parte Izquierda*/
+		
+	
+		const responseMedico = await fetch(`/api/Medico/${medico.value}/Informacion`);
+		const medico_informacion = await responseMedico.json();
+		foto_medico.src='/medicos_imagenes/'+medico_informacion["imagen"];
+		nombre_medico.innerHTML = medico_informacion["nombres"]+' '+medico_informacion["ape_paterno"]+' '+medico_informacion["ape_materno"];
+		especialidad_medico.innerText = "Especialista en" +' '+medico_informacion["especialidad"]["nombre"];
+		telefono_medico.innerText = medico_informacion["celular"];
+		consultorio_medico.innerHTML = '<span>Consultorio: </span>'+ medico_informacion["consultorio"]["cod_habitacion"];
+		doctor.style.display="block";
+
+
 		/*Selecciona al primer medico que aparece en el select option y muestra sus horarios*/
 		const responseHorario = await fetch(`/api/Medico/${medico.value}/Horarios`);
 		const datahorario = await responseHorario.json();
@@ -341,7 +359,7 @@
 		data.forEach(element=>{
 			option= option + `${element.precio} soles`
 		});
-		precioServicio.value = option;
+		precioServicio.innerText = option;
 	});
 
 	/*Horarios del Medico Seleccionado*/

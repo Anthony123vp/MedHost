@@ -168,7 +168,6 @@ class ReservaController extends Controller
             'consultorio'=>'required',
             'modalidad'=>'required'
         ]);
-
         $id_horario_medico=$id->id_medico_horario;
         /** Consiguiendo el Id del paciente por medio del dni*/
         $paciente = Paciente::where('dni',$request->dni)->firstOrFail();

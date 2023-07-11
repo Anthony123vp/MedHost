@@ -231,10 +231,6 @@
 				});
 				precioServicio.innerText = option;
 
-
-
-
-
 		/*rellena los options del select medico*/
 		let option_medico =  ``;
 		const medicoresponse= await fetch(`/api/Medico/${e.target.value}`);
@@ -245,9 +241,7 @@
 		medico.innerHTML = option_medico;
 
 
-		/* Muestra la Informacion del Medico en la parte Izquierda*/
-		
-	
+		/* Muestra la Informacion del Medico en la parte Izquierda*/	
 		const responseMedico = await fetch(`/api/Medico/${medico.value}/Informacion`);
 		const medico_informacion = await responseMedico.json();
 		foto_medico.src='/medicos_imagenes/'+medico_informacion["imagen"];

@@ -298,8 +298,8 @@ body.dark .switch::before{
 }
 .home .content{
   display: flex;
-  justify-content: space-between;
-  height: auto;
+  height: 86vh;
+  
   align-items: center;
   flex-direction: column;
 }
