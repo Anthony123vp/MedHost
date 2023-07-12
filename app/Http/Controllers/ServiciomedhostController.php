@@ -12,8 +12,6 @@ class ServiciomedhostController extends Controller
 {
     public function index()
     {
-        // $servicios_medhost = Servicio_Medhost::all();
-        // return view('serviciosmedhost.index', compact('servicios_medhost'));
 
         $servicios_medhost = Servicio_Medhost::with('servicio_especialidad')->get();
         return view('serviciosmedhost.index', compact('servicios_medhost'));
@@ -77,7 +75,6 @@ class ServiciomedhostController extends Controller
             return redirect()->back()->with('error', 'No se encontró el servicio y especialidad especificados.');
         }
         
-        // $idServicioEspecialidad = $servicioEspecialidad->id_servicio_especialidad;
         return view('serviciosmedhost.edit', compact('servicio_medhost','especialidades','servicios','servicioEspecialidad'));
     }
 

@@ -37,7 +37,6 @@ class RecetasController extends Controller
 
         $id_reserva = 1; // Reemplaza 123 con el ID de la reserva que deseas obtener
 
-         // Buscar la reserva en la base de datos
          $reserva = Reserva::findOrFail($id_reserva);
 
 

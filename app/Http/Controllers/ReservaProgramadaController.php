@@ -30,16 +30,11 @@ class ReservaProgramadaController extends Controller
         $medico=Medico::where('id_user',$id_user)->firstOrFail();
         $id_medico=$medico->id_medico;
         $citas_pendientes = Cita_Pendiente::where('id_medico',$id_medico)->get();
-        return view('Medico_botones\citas_programadas\index',['citas'=>$citas_pendientes]);
+        return view('Medico_botones.citas_programadas.index',['citas'=>$citas_pendientes]);
     }
 
     public function edit($id, $id2)
     {
-        // $recepcionista = Recepcionista::findOrFail($id);
-        // $id_user = $recepcionista->id_user;
-        // $usuario = Usuario::findOrFail($id_user);
-        
-        // return view('recepcionistas.edit', compact('recepcionista', 'usuario'));
 
         $pacientes = Paciente::findOrFail($id);
         $fechaNacimiento = $pacientes->f_nacimiento;
@@ -48,12 +43,10 @@ class ReservaProgramadaController extends Controller
         $seguros = Insurance::findOrFail($id_insurance);
         $reserva = Cita_Pendiente::where('id_reserva', $id2)->firstOrFail();
         $horaFin = Carbon::parse($reserva->hora_inicio)->addMinutes(30);
-        return view('Medico_botones\citas_programadas\edit', compact('pacientes', 'seguros','edad','reserva','horaFin'));
-        // return view('Medico_botones\citas_programadas\edit');
+        return view('Medico_botones.citas_programadas.edit', compact('pacientes', 'seguros','edad','reserva','horaFin'));
     }
 
 
-    /**Cuando se pone la clase Modelo detras de la variable */
     public function store(Request $request,Reserva $id)
     {
         
@@ -82,7 +75,6 @@ class ReservaProgramadaController extends Controller
             $explotado_aux = explode("image/", $explotado_parts[0]);
             $decode_64 = base64_decode($explotado_parts[1]);
             file_put_contents($rutaArchivo, $decode_64);
-            // dd($firmaBase64, $nombreArchivo, $rutaArchivo,$explotado_aux, $decode_64);
 
 
         Receta::create([
@@ -135,6 +127,6 @@ class ReservaProgramadaController extends Controller
             'updated_at' => now()
         ]);
 
-        return redirect()->route('Medico_botones\citas_programadas\index')->with('success', 'Servicio_Medhost actualizada correctamente.');
+        return redirect()->route('Medico_botones.citas_programadas.index')->with('success', 'Servicio_Medhost actualizada correctamente.');
     }
 }

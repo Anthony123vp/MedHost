@@ -39,35 +39,6 @@ class MedicoController extends Controller
         if (Auth::user()->id_rol!=2){
             return redirect('Dashboard');
         }
-        // $request->validate([
-        //     'dni' => 'required|unique:personas',
-        //     'nombres' => 'required',
-        //     'apellidos_paternos' => 'required',
-        //     'apellidos_maternos' => 'required',
-        //     'sexo' => 'required',
-        //     'dia' => 'required',
-        //     'month' => 'required',
-        //     'anio' => 'required',
-        //     'email' => 'required|unique:personas',
-        //     'celular' => 'required',
-        // ]);
-
-        // $persona = Persona::create($request->all());
-        // $id_persona = $persona->id;
-    
-        // $request->validate([
-        //     'id_especialidad' => 'required',
-        //     'password_1' => 'required',
-        //     'password_2' => 'required',
-        // ]);
-    
-        // $request->merge(['id_persona' => $id_persona]);
-    
-        // Medico::create($request->all());
-    
-        // return redirect()->route('medicos.index')->with('success', 'Medico creado correctamente.');
-
-        // --------------------------------------------
         $request->validate([
             'email' => 'required|unique:users',
             'password' => 'required',
@@ -115,10 +86,8 @@ class MedicoController extends Controller
             'f_nacimiento' => $request->f_nacimiento,
             'celular' => $request->celular,
             'imagen' => $imagen_ruta ,
-            // 'password_1' => bcrypt($request->password_1),
         ]);
         
-        /**Cambiando de estado al consultorio seleccionado */
         $consultorio = Consultorio::where('id_consultorio', $request->id_consultorio)->FirstOrFail();
         $consultorio->estado=0;
         $consultorio->save();
@@ -143,8 +112,6 @@ class MedicoController extends Controller
         if (Auth::user()->id_rol!=2){
             return redirect('Dashboard');
         }
-        // $medico = Medico::findOrFail($id);
-        // return view('medicos.edit', compact('medico'));
 
         $medico = Medico::findOrFail($id);
         $id_user = $medico->id_user;
@@ -156,19 +123,6 @@ class MedicoController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'id_especialidad' => 'required',
-        //     'password_1' => 'required',
-        //     'password_2' => 'required',
-        //     'id_persona' => 'required',
-        //     'estado' => 'required',
-        // ]);
-
-        // $medico = Medico::findOrFail($id);
-        // $medico->update($request->all());
-
-        // return redirect()->route('medicos.index')->with('success', 'Medico actualizado correctamente.');
-
         $request->validate([
             'nombres' => 'required|unique:medicos,nombres,'.$id.',id_medico',
             'id_especialidad' => 'required',
@@ -227,11 +181,6 @@ class MedicoController extends Controller
         if (Auth::user()->id_rol!=2){
             return redirect('Dashboard');
         }
-        // $medico = Medico::findOrFail($id);
-        // $medico->delete();
-
-        // return redirect()->route('medicos.index')->with('success', 'Medico eliminado correctamente.');
-
         $medico = Medico::findOrFail($id);
         $idUsuario = $medico->id_user;
 

@@ -156,9 +156,6 @@ class UsuarioController extends Controller
         if (Auth::user()->id_rol!=2){
             return redirect('Dashboard');
         }
-        // $usuario = Usuario::findOrFail($id);
-        // $usuario->estado = 0;
-        // $usuario->save();
 
         $usuario = Usuario::findOrFail($id);
         $usuario->estado = 0;
@@ -198,13 +195,5 @@ class UsuarioController extends Controller
         return redirect()->route('usuarios.index')->with('success', 'Usuario desactivado correctamente.');
     }
     
-    // public function destroy2($id)
-    // {
-    //     $usuario = Usuario::findOrFail($id);
-    //     $usuario->estado = 1;
-    //     $usuario->save();
-
-    //     return redirect()->route('usuarios.index')->with('success', 'Usuario desactivado correctamente.');
-    // }
 
 }

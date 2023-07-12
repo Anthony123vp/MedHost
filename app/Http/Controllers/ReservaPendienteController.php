@@ -23,7 +23,7 @@ class ReservaPendienteController extends Controller
         $paciente=Paciente::where('id_user',$id_user)->firstOrFail();
         $id_paciente=$paciente->id_paciente;
         $citas_atendidas = Cita_Pendiente::where('id_paciente',$id_paciente)->get();
-        return view ('Paciente_botones\citas_pendiente\index',['citas'=>$citas_atendidas]);
+        return view ('Paciente_botones.citas_pendiente.index',['citas'=>$citas_atendidas]);
     }
 
     public function edit($id)
@@ -33,7 +33,7 @@ class ReservaPendienteController extends Controller
         }
         $monto = PagoPendiente::findOrFail($id);
         
-        return view('Paciente_botones\pagos_pendiente\edit', compact('monto'));
+        return view('Paciente_botones.pagos_pendiente.edit', compact('monto'));
     }
 
     public function update(Request $request, $id)

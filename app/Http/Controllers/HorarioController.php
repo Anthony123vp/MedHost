@@ -28,7 +28,7 @@ class HorarioController extends Controller
         $id_medico=$medico->id_medico;
         
         $horarios = DB::SELECT("select * from HORARIO_MEDICO where id_medico=$id_medico"); 
-        return view('Medico_botones/horario/index',['horarios'=>$horarios]);
+        return view('Medico_botones.horario.index',['horarios'=>$horarios]);
     }
 
     /**
@@ -39,7 +39,7 @@ class HorarioController extends Controller
         if (Auth::user()->id_rol!=4){
             return redirect('Dashboard');
         }
-        return view('Medico_botones/horario/create');
+        return view('Medico_botones.horario.create');
     }
 
     /**

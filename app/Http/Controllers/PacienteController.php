@@ -24,10 +24,6 @@ class PacienteController extends Controller
         return view('pacientes.index', compact('pacientes'));
     }
 
-    // public function create()
-    // {
-    //     return view('pacientes.create');
-    // }
 
     public function create()
     {
@@ -89,9 +85,6 @@ class PacienteController extends Controller
         return redirect()->route('pacientes.index')->with('success', 'Paciente creado correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
 
     public function show($id)
     {
@@ -102,24 +95,10 @@ class PacienteController extends Controller
         return view('pacientes.show', compact('paciente'));
     } 
 
-    // public function show(Paciente $paciente)
-    // {
-        //
-    // }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    // public function edit(Paciente $paciente)
-    // {
-        //
-    // }
 
 
     public function edit($id)
     {
-        // $paciente = Paciente::findOrFail($id);
-        // return view('pacientes.edit', compact('paciente'));
         if (Auth::user()->id_rol!=3){
             return redirect('Dashboard');
         }
@@ -132,45 +111,8 @@ class PacienteController extends Controller
         return view('pacientes.edit', compact('paciente', 'usuario','insurances'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    // public function update(Request $request, Paciente $paciente)
-    // {
-        //
-    // }
-
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'nombres' => 'required|unique:pacientes,nombres,'.$id.',id_paciente',
-        //     'ape_paterno' => 'required',
-        //     'ape_materno' => 'required',
-        //     'sexo' => 'required',
-        //     'f_nacimiento' => 'required',
-        //     'celular' => 'required',
-        //     'insurance' => 'required',
-        //     'dni' => 'required',
-        // ]);
-        
-        
-        // $paciente = Paciente::findOrFail($id);
-        // $paciente->update([
-        //     'nombres' => $request->nombres,
-        //     'ape_paterno' => $request->ape_paterno,
-        //     'ape_materno' => $request->ape_materno,
-        //     'sexo' => $request->sexo,
-        //     'celular' => $request->celular,
-        //     'insurance' => $request->insurance,
-        //     'dni' => $request->dni,
-        //     'f_nacimiento' => $request->f_nacimiento,
-        //     'updated_at' => now()
-        // ]);
-
-        // $paciente = Paciente::findOrFail($id);
-        // $paciente->update($request->all());
-
-        // ---------------------------------
         if (Auth::user()->id_rol!=3){
             return redirect('Dashboard');
         }
@@ -220,11 +162,6 @@ class PacienteController extends Controller
 
     public function destroy($id)
     {
-
-        // $paciente = Paciente::findOrFail($id);
-        // $paciente->estado = 0;
-        // $paciente->updated_at = now();
-        // $paciente->save();
         if (Auth::user()->id_rol!=3){
             return redirect('Dashboard');
         }

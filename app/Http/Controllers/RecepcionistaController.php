@@ -37,17 +37,6 @@ class RecepcionistaController extends Controller
         if (Auth::user()->id_rol!=2){
             return redirect('Dashboard');
         }
-        // $request->validate([
-        //     'nombres' => 'required',
-        //     'ape_paterno' => 'required',
-        //     'ape_materno' => 'required',
-        //     'celular' => 'required',
-        //     'dni' => 'required',
-        //     'f_nacimiento' => 'required',
-        // ]);
-        // Recepcionista::create($request->all());
-
-        // -------------------------
 
         $request->validate([
             'email' => 'required|unique:users',
@@ -82,7 +71,6 @@ class RecepcionistaController extends Controller
             'sexo' => $request->sexo,
             'f_nacimiento' => $request->f_nacimiento,
             'celular' => $request->celular,
-            // 'password_1' => bcrypt($request->password_1),
         ]);
     
         return redirect()->route('recepcionistas.index')->with('success', 'Recepcionista creado correctamente.');
@@ -94,13 +82,6 @@ class RecepcionistaController extends Controller
         $recepcionista = Recepcionista::findOrFail($id);
         return view('recepcionistas.show', compact('recepcionista'));
     } 
-
-
-    // public function edit($id)
-    // {
-    //     $recepcionista = Recepcionista::findOrFail($id);
-    //     return view('recepcionistas.edit', compact('recepcionista'));
-    // }
 
     public function edit($id)
     {
@@ -120,63 +101,8 @@ class RecepcionistaController extends Controller
             return redirect('Dashboard');
         }
         $recepcionista = Recepcionista::findOrFail($id);
-        // return view('recepcionistas.destroy', compact('recepcionista'));
         return redirect()->route('recepcionistas.destroy', ['id' => $id]);
     }
-
-    // public function update(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'email' => 'required|unique:usuarios,email,'.$id,
-    //         'password_1' => 'required',
-    //         'password_2' => 'required',
-    //         'estado' => 'required',
-    //         'id_rol' => 'required',
-    //     ]);
-    
-    //     $usuario = Usuario::findOrFail($id);
-    //     $usuario->update([
-    //         'email' => $request->email,
-    //         'password_1' => $request->password_1,
-    //         'password_2' => $request->password_2,
-    //         'estado' => $request->estado,
-    //         'id_rol' => $request->id_rol,
-    //         'updated_at' => now()
-    //     ]);
-    
-    //     return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado correctamente.');
-    // }
-
-    // public function update(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'nombres' => 'required|unique:recepcionistas,nombres,'.$id.',id_recepcionista',
-    //         'ape_paterno' => 'required',
-    //         'ape_materno' => 'required',
-    //         'sexo' => 'required',
-    //         'celular' => 'required',
-    //         'dni' => 'required',
-    //         'f_nacimiento' => 'required',
-    //     ]);
-
-    //     $recepcionista = Recepcionista::findOrFail($id);
-    //     $recepcionista->update([
-    //         'nombres' => $request->nombres,
-    //         'ape_paterno' => $request->ape_paterno,
-    //         'ape_materno' => $request->ape_materno,
-    //         'sexo' => $request->sexo,
-    //         'celular' => $request->celular,
-    //         'dni' => $request->dni,
-    //         'f_nacimiento' => $request->f_nacimiento,
-    //         'updated_at' => now()
-    //     ]);
-
-
-
-    //     return redirect()->route('recepcionistas.index')->with('success', 'Recepcionista actualizado correctamente.');
-    // }
-
-
 
     public function update(Request $request, $id)
     {
@@ -224,10 +150,6 @@ class RecepcionistaController extends Controller
 
     public function destroy($id)
     {
-        // $recepcionista = Recepcionista::findOrFail($id);
-        // $recepcionista->estado = 0;
-        // $recepcionista->updated_at = now();
-        // $recepcionista->save();
 
         if (Auth::user()->id_rol!=2){
             return redirect('Dashboard');

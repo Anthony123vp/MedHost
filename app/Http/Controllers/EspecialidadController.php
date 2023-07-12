@@ -62,24 +62,6 @@ class EspecialidadController extends Controller
         return view('especialidades.edit', compact('especialidad'));
     }
 
-    // public function update(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'nombre' => 'required',
-    //         'estado' => 'required',
-    //         'updated_at' => now()
-    //     ]);
-
-    //     $especialidad = Especialidad::findOrFail($id);
-    //     $especialidad->update($request->all());
-
-    //     $servicios_especialidades = Servicio_Especialidad::findOrFail($id);
-    //     $servicios_especialidades->updated_at = now();
-    //     $servicios_especialidades->save();
-
-    //     return redirect()->route('especialidades.index')->with('success', 'Especialidad actualizado correctamente.');
-    // }
-
     public function update(Request $request, $id)
 {
     $request->validate([

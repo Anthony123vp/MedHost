@@ -84,55 +84,9 @@ class AdministradorController extends Controller
         return redirect()->route('administradores.destroy', ['id' => $id]);
     }
 
-    // public function update(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'email' => 'required|unique:usuarios,email,'.$id,
-    //         'password_1' => 'required',
-    //         'password_2' => 'required',
-    //         'estado' => 'required',
-    //         'id_rol' => 'required',
-    //     ]);
-    
-    //     $usuario = Usuario::findOrFail($id);
-    //     $usuario->update([
-    //         'email' => $request->email,
-    //         'password_1' => $request->password_1,
-    //         'password_2' => $request->password_2,
-    //         'estado' => $request->estado,
-    //         'id_rol' => $request->id_rol,
-    //         'updated_at' => now()
-    //     ]);
-    
-    //     return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado correctamente.');
-    // }
-
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'nombres' => 'required|unique:administradores,nombres,'.$id.',id_administrador',
-        //     'ape_paterno' => 'required',
-        //     'ape_materno' => 'required',
-        //     'sexo' => 'required',
-        //     'celular' => 'required',
-        //     'dni' => 'required',
-        //     'f_nacimiento' => 'required',
-        // ]);
-        
 
-        // $administrador = Administrador::findOrFail($id);
-        // $administrador->update([
-        //     'nombres' => $request->nombres,
-        //     'ape_paterno' => $request->ape_paterno,
-        //     'ape_materno' => $request->ape_materno,
-        //     'sexo' => $request->sexo,
-        //     'celular' => $request->celular,
-        //     'dni' => $request->dni,
-        //     'f_nacimiento' => $request->f_nacimiento,
-        //     'updated_at' => now()
-        // ]);
-
-        // ---------------------------------
 
         $request->validate([
             'nombres' => 'required|unique:administradores,nombres,'.$id.',id_administrador',
@@ -175,11 +129,6 @@ class AdministradorController extends Controller
 
     public function destroy($id)
     {
-        // $administrador = Administrador::findOrFail($id);
-        // $administrador->estado = 0;
-        // $administrador->updated_at = now();
-        // $administrador->save();
-
         $administrador = Administrador::findOrFail($id);
         $idUsuario = $administrador->id_user;
 
